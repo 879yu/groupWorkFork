@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>TOP</title>
+<title>ログイン失敗</title>
 </head>
 <body>
-<h1>トップページ</h1>
-<a href="/groupwork/LoginServlet">ログイン</a>
+<p>ログインに失敗しました</p><br>
+<a href="/WEB-INF/jsp/login.jsp">戻る</a>
 </body>
 </html>
