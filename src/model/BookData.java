@@ -16,7 +16,14 @@ public class BookData {
     public BookData() {}
 
     //コンストラクタ
-    public BookData(String title, String author, String publishedDate, String publisher, String description, String imageLinks, String isbn, String purchaseDate) {
+    public BookData(String title,
+    		String author,
+    		String publishedDate,
+    		String publisher,
+    		String description,
+    		String imageLinks,
+    		String isbn,
+    		String purchaseDate) {
 		this.title = title;
 		this.author = author;
 		this.publishedDate = publishedDate;

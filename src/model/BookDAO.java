@@ -1,11 +1,15 @@
 package model;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 public class BookDAO extends ConnectionDAO{
 
@@ -43,6 +47,24 @@ public class BookDAO extends ConnectionDAO{
 	}
 
 
-	// す
+	// 購入した書籍をDBに登録するメソッド
+	public boolean addBook (HttpServletRequest request) throws ServletException, IOException {
+		// 実行するSQL文を文字列として事前に設定
+		final String SQL = "INSERT INTO BOOKS VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+		try (Connection conn = getConnection();
+				PreparedStatement pstm = conn.prepareStatement(SQL)) {
+
+			// リクエストスコープから本のデータを取得
+			BookData bookData = (BookData)request.getAttribute("bookData");
+
+
+
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 }
