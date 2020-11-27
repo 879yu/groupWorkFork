@@ -9,14 +9,14 @@ import java.util.List;
 
 public class BookDAO extends ConnectionDAO{
 
-	public List<Book> findAllBooks() {
+	public List<BookData> findAllBooks() {
 		// 実行するSQL文を文字列として事前に設定
-				final String SQL = "SELECT * FROM BOOKS;";
+				final String SQL = "SELECT * FROM BOOKS";
 
 				// 戻り値をセットするリストの準備
-				List<Book> bookList = new ArrayList<>();
+				List<BookData> bookList = new ArrayList<>();
 
-				try (Connection conn = getConn();
+				try (Connection conn = getConnection();
 						PreparedStatement pstm = conn.prepareStatement(SQL)) {
 
 					// クエリの実行
@@ -24,14 +24,16 @@ public class BookDAO extends ConnectionDAO{
 
 					// DBを一行ずつ読み込んで本情報をインスタンスにセット
 					while (rs.next()) {
-						Book book = new Book();
-						book.setBookId(rs.getInt(1));
-						book.setBookTitle(rs.getString(2));
-						book.setBuyDate(rs.getString(3));
-						book.setIsbn(rs.getInt(3));
+						BookData bookData = new BookData();
+						bookData.setTitle(rs.getString(1));
+						bookData.setAuthor(rs.getString(2));
+						bookData.setPublishedDate(rs.getString(3));
+						bookData.setPublisher(rs.getString(4));
+						bookData.setDescription(rs.getString(5));
+						bookData.setImg(rs.getString(6));
 
 						// インスタンスにセットした情報をリストに格納
-						bookList.add(book);
+						bookList.add(bookData);
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
