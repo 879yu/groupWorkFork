@@ -9,19 +9,22 @@ public class BookData {
     private String description;
     private String imageLinks;
     private String isbn;
+    private String purchaseDate;
 
 
     // デフォルトコンストラクタ
     public BookData() {}
 
     //コンストラクタ
-    public BookData(String title, String author, String publishedDate, String publisher, String description, String imageLinks, String isbn) {
+    public BookData(String title, String author, String publishedDate, String publisher, String description, String imageLinks, String isbn, String purchaseDate) {
 		this.title = title;
 		this.author = author;
 		this.publishedDate = publishedDate;
 		this.publisher = publisher;
 		this.description = description;
 		this.imageLinks = imageLinks;
+		this.purchaseDate = purchaseDate;
+
 	}
 
     //ゲッターメソッド
@@ -53,6 +56,10 @@ public class BookData {
 		return isbn;
 	}
 
+	public String getPurchaseDate() {
+		return purchaseDate;
+	}
+
 	// セッターメソッド
 	public void setTitle(String booktitle) {
 		this.title = booktitle;
@@ -81,6 +88,10 @@ public class BookData {
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+
+	public void setPurchaseDate(String purchaseDate) {
+		this.purchaseDate = purchaseDate;
 	}
 
 }
