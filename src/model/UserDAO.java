@@ -22,7 +22,7 @@ public class UserDAO extends ConnectionDAO {
 		// 戻り値をセットするDTOのインスタンスを生成
 		User user = new User();
 
-		try (Connection conn = getConn();
+		try (Connection conn = getConnection();
 				PreparedStatement pstm = conn.prepareStatement(SQL)) {
 
 			// プレースホルダにユーザーが入力した情報をセット
@@ -59,7 +59,7 @@ public class UserDAO extends ConnectionDAO {
 		// 戻り値をセットするリストの準備
 		List<User> userList = new ArrayList<>();
 
-		try (Connection conn = getConn();
+		try (Connection conn = getConnection();
 				PreparedStatement pstm = conn.prepareStatement(SQL)) {
 
 			// クエリの実行
