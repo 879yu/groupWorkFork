@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import model.BookData;
 import model.EnvSet;
 
+
 public class AddBookLogic implements EnvSet {
 
 //	public void init(ServletConfig config) throws ServletException {
@@ -180,10 +181,11 @@ public class AddBookLogic implements EnvSet {
 
     		//検索結果データの追加
     		BookData bookData=new BookData( title,  author,  publishedDate,  publisher,  description,  imageLinks, isbn);
+    		request.setAttribute("BookData",bookData);
 
     		// DAOに接続してinsert
     		BookDAO bookDAO=new BookDAO();
-    		boolean isAdd=BookDAO.メソッド名(bookData);
+    		boolean isAdd=bookDAO.addBook(request);
 
     		if(isAdd) {
             	forwardPass= "/成功.jsp";
