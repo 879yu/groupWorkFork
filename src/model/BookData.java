@@ -24,13 +24,13 @@ public class BookData {
     		String imageLinks,
     		String isbn,
     		String purchaseDate) {
-		this.title = title;
-		this.author = author;
+		this.title         = title;
+		this.author        = author;
 		this.publishedDate = publishedDate;
-		this.publisher = publisher;
-		this.description = description;
-		this.imageLinks = imageLinks;
-		this.purchaseDate = purchaseDate;
+		this.publisher     = publisher;
+		this.description   = description;
+		this.imageLinks    = imageLinks;
+		this.purchaseDate  = purchaseDate;
 
 	}
 
@@ -55,7 +55,7 @@ public class BookData {
 		return description;
 	}
 
-	public String getImg() {
+	public String getImageLinks() {
 		return imageLinks;
 	}
 
@@ -88,7 +88,7 @@ public class BookData {
 		this.description = description;
 	}
 
-	public void setImg(String imageLinks) {
+	public void setImageLinks(String imageLinks) {
 		this.imageLinks = imageLinks;
 	}
 
