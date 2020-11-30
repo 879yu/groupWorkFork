@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
+<form "" method="get"></form>
+<form "" method="get"></form>
+<form "" method="get"></form>
 
+<table>
+<tr>
+<c:forEach 
+</table>
 </body>
 </html>
