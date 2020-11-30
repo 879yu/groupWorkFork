@@ -17,9 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import model.BookData;
-import model.EnvSet;
-
 
 public class AddBookLogic implements EnvSet {
 
@@ -180,7 +177,8 @@ public class AddBookLogic implements EnvSet {
     		String purchaseDate=sdf.format(date);
 
     		//検索結果データの追加
-    		BookData bookData=new BookData( title,  author,  publishedDate,  publisher,  description,  imageLinks, isbn);
+    		BookData bookData=new BookData( title,  firstAuthor,  publishedDate,  publisher,  description,
+    				imageLinks, isbn, purchaseDate);
     		request.setAttribute("BookData",bookData);
 
     		// DAOに接続してinsert
@@ -188,16 +186,16 @@ public class AddBookLogic implements EnvSet {
     		boolean isAdd=bookDAO.addBook(request);
 
     		if(isAdd) {
-            	forwardPass= "/成功.jsp";
+            	forwardPass= "/WEB-INF/jsp/success.jsp";
             	// リクエストパラメータに保存
         		request.setAttribute("bookData",bookData);
     		}else {
-    			forwardPass="/失敗.jsp";
+    			forwardPass="/WEB-INF/jsp/fail.jsp";
     		}
 
         }catch(Exception e){
         	//例外発生時、error.jspへフォワードする
-        	forwardPass= "/失敗.jsp";
+        	forwardPass= "/WEB-INF/jsp/fail.jsp";
         }
 
 

@@ -12,10 +12,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.BookData;
 import model.LendDAO;
 import model.LendData;
+import model.User;
 
 @WebServlet("/LendServlet")
 public class LendServlet extends HttpServlet {
@@ -52,12 +54,16 @@ public class LendServlet extends HttpServlet {
 
 			// 個人の履歴表示
 			case "employee":
-				lendList=lendDAO.findメソッド();
+				// userIdの取得
+				HttpSession session=request.getSession();
+				User user=(User) session.getAttribute("user");
+				int userId=user.getUserId();
+				lendList=lendDAO.findMyLendBooks(userId);
 
 			}
 
 			request.setAttribute("lendList", lendList);
-			dsp=request.getRequestDispatcher("/履歴一覧.jsp");
+			dsp=request.getRequestDispatcher("/WEB-INF/jsp/lend_borrow.jsp.jsp");
 
 			break;
 
@@ -65,7 +71,7 @@ public class LendServlet extends HttpServlet {
 		case "lending":
 			List<BookData> bookList=new ArrayList<>();
 			bookList=lendDAO.findMyLendingBooks();
-			dsp=request.getRequestDispatcher("/貸出中一覧.jsp");
+			dsp=request.getRequestDispatcher("/WEB-INF/jsp/貸出中一覧.jsp");
 			break;
 
 		// 貸出ボタン（途中）
@@ -80,7 +86,7 @@ public class LendServlet extends HttpServlet {
 		case "return":
 			// jspからLendテーブルのidを取得
 			// わからない
-//			int lendId=(int)request.getAttribute("lendId");
+			int lendId=(int)request.getAttribute("lendId");
 
 			// 返却日（今日）の日付を取得
 			date=new Date();
@@ -88,10 +94,10 @@ public class LendServlet extends HttpServlet {
 
 			boolean isReturn=lendDAO.setRetrunDate(lendId, returnDate);
 			if(isReturn) {
-				dsp=request.getRequestDispatcher("/返却成功.jsp");
+				dsp=request.getRequestDispatcher("/WEB-INF/jsp/success.jsp");
 
 			}else {
-				dsp=request.getRequestDispatcher("/返却失敗.jsp");
+				dsp=request.getRequestDispatcher("/WEB-INF/jsp/fail.jsp");
 
 			}
 		}
