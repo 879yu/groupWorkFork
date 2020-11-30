@@ -24,10 +24,10 @@ public class LoginLogic {
 		user=userDAO.findByLogin(login);
 
 		String forwardPass;
-		if(user.getUserId()==0) {
-			forwardPass= "/WEB-INF/jsp/admin.jsp";
-		}else if(user==null) {
+		if(user==null) {
 			forwardPass= "/WEB-INF/jsp/fail.jsp";
+		}else if(user.getUserId()==0) {
+			forwardPass= "/WEB-INF/jsp/admin.jsp";
 		}else {
 			forwardPass= "/WEB-INF/jsp/mypage.jsp";
 		}

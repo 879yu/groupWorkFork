@@ -29,7 +29,7 @@ public class UserDAO extends ConnectionDAO {
 			pstm.setInt(1, userId);
 			pstm.setString(2, password);
 
-			// クエリの実行
+			// クエリを実行し、ResultSetに結果を格納
 			ResultSet rs = pstm.executeQuery();
 
 			if (rs.next()) {
