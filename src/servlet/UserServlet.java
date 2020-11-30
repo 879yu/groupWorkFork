@@ -29,7 +29,7 @@ public class UserServlet extends HttpServlet {
 		UserDAO userDAO=new UserDAO();
 		userList=userDAO.findAllUsers();
 		request.setAttribute("userList", userList);
-		RequestDispatcher dsp=request.getRequestDispatcher("/従業員一覧.jsp");
+		RequestDispatcher dsp=request.getRequestDispatcher("/WEB-INF/jsp/employee_list.jsp");
 		dsp.forward(request, response);
 	}
 
