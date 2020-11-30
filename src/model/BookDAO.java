@@ -79,8 +79,8 @@ public class BookDAO extends ConnectionDAO{
 			pstm.setString(3,bookData.getPublishedDate()); // 出版日
 			pstm.setString(4,bookData.getPublisher());     // 出版社
 			pstm.setString(5,bookData.getDescription());   // 書籍概要
-			pstm.setString(6,bookData.getImageLinks());    // 表紙画像リンク
-			pstm.setString(7,bookData.getIsbn());          // ISBN
+			pstm.setString(6,bookData.getIsbn());          // ISBN
+			pstm.setString(7,bookData.getImageLinks());    // 表紙画像リンク
 			pstm.setString(8,bookData.getPurchaseDate());  // 購入日
 
 				// 更新された行数を変数に格納（クエリ成功なら1が格納される）

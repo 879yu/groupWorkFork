@@ -18,6 +18,24 @@ public class BookData {
 
     //コンストラクタ
     public BookData(
+    		String title,
+    		String author,
+    		String publishedDate,
+    		String publisher,
+    		String description,
+    		String isbn,
+    		String imageLinks,
+    		String purchaseDate) {
+		this.title         = title;
+		this.author        = author;
+		this.publishedDate = publishedDate;
+		this.publisher     = publisher;
+		this.description   = description;
+		this.imageLinks    = imageLinks;
+		this.purchaseDate  = purchaseDate;
+	}
+
+    public BookData(
     		int bookId,
     		String title,
     		String author,
