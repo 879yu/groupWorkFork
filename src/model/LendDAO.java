@@ -53,7 +53,7 @@ public class LendDAO extends ConnectionDAO{
 	 * @param userId
 	 * @return List ログイン中のユーザーへ貸出中の書籍データを格納したArrayList
 	 */
-	public List<BookData> findMyLendingBooks(int userId){
+	public List<BookData> findMyLendBooks(int userId){
 		// 実行するSQL文を文字列として事前に設定
 		final String SQL = "SELECT * FROM BOOKS INNER JOIN LEND ON USER_ID =" + userId;
 

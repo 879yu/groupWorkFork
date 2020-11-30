@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 public class BookDAO extends ConnectionDAO{
 
 	/**
-	 *  booksテーブル内の全データを返す
+	 * booksテーブル内の全データを返す
 	 * @return List 購入済みの全書籍データを格納したArrayList
 	 * @see BookData
 	 */
@@ -34,7 +34,7 @@ public class BookDAO extends ConnectionDAO{
 			// DBを一行ずつ読み込んで書籍情報をインスタンスにセット
 			while (rs.next()) {
 				BookData bookData = new BookData();
-				bookData.setBookId(rs.getInt(1));
+				bookData.setBookId(rs.getInt(1));           // 書籍ID
 				bookData.setTitle(rs.getString(2));         // 書籍タイトル
 				bookData.setAuthor(rs.getString(3));        // 著者
 				bookData.setPublishedDate(rs.getString(4)); // 出版日

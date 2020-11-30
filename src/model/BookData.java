@@ -27,6 +27,7 @@ public class BookData {
     		String imageLinks,
     		String isbn,
     		String purchaseDate) {
+    	this.bookId        = bookId;
 		this.title         = title;
 		this.author        = author;
 		this.publishedDate = publishedDate;
@@ -34,7 +35,6 @@ public class BookData {
 		this.description   = description;
 		this.imageLinks    = imageLinks;
 		this.purchaseDate  = purchaseDate;
-
 	}
 
     //ゲッターメソッド
