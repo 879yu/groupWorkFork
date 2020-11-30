@@ -34,14 +34,15 @@ public class BookDAO extends ConnectionDAO{
 			// DBを一行ずつ読み込んで書籍情報をインスタンスにセット
 			while (rs.next()) {
 				BookData bookData = new BookData();
-				bookData.setTitle(rs.getString(1));         // 書籍タイトル
-				bookData.setAuthor(rs.getString(2));        // 著者
-				bookData.setPublishedDate(rs.getString(3)); // 出版日
-				bookData.setPublisher(rs.getString(4));     // 出版社
-				bookData.setDescription(rs.getString(5));   // 書籍概要
-				bookData.setImageLinks(rs.getString(6));    // 表紙画像リンク
-				bookData.setIsbn(rs.getString(7));          // ISBN
-				bookData.setPurchaseDate(rs.getString(8));  // 購入日
+				bookData.setBookId(rs.getInt(1));
+				bookData.setTitle(rs.getString(2));         // 書籍タイトル
+				bookData.setAuthor(rs.getString(3));        // 著者
+				bookData.setPublishedDate(rs.getString(4)); // 出版日
+				bookData.setPublisher(rs.getString(5));     // 出版社
+				bookData.setDescription(rs.getString(6));   // 書籍概要
+				bookData.setImageLinks(rs.getString(7));    // 表紙画像リンク
+				bookData.setIsbn(rs.getString(8));          // ISBN
+				bookData.setPurchaseDate(rs.getString(9));  // 購入日
 
 				// インスタンスにセットした情報をリストに格納
 				bookList.add(bookData);

@@ -2,6 +2,7 @@ package model;
 
 public class BookData {
 
+	private int bookId;
     private String title;
     private String author;
     private String publishedDate;
@@ -16,7 +17,9 @@ public class BookData {
     public BookData() {}
 
     //コンストラクタ
-    public BookData(String title,
+    public BookData(
+    		int bookId,
+    		String title,
     		String author,
     		String publishedDate,
     		String publisher,
@@ -35,6 +38,10 @@ public class BookData {
 	}
 
     //ゲッターメソッド
+    public int getBookId() {
+		return bookId;
+	}
+
 	public String getTitle() {
 		return title;
 	}
@@ -68,6 +75,10 @@ public class BookData {
 	}
 
 	// セッターメソッド
+	public void setBookId(int bookId) {
+		this.bookId = bookId;
+	}
+
 	public void setTitle(String booktitle) {
 		this.title = booktitle;
 	}
