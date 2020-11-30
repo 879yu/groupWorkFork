@@ -78,7 +78,7 @@ public class LendServlet extends HttpServlet {
 
 		// 返却ボタン（途中）
 		case "return":
-			// Lendテーブルのidを取得
+			// jspからLendテーブルのidを取得
 			// わからない
 //			int lendId=(int)request.getAttribute("lendId");
 
