@@ -51,7 +51,7 @@ public class LendDAO extends ConnectionDAO{
 	/**
 	 * ログイン中のユーザーの貸出中の書籍一覧
 	 * @param userId
-	 * @return List ログイン中のユーザーへ貸出中の書籍データを格納したArrayList
+	 * @return List ログイン中のユーザーの全貸出履歴を格納したArrayList
 	 */
 	public List<BookData> findMyLendBooks(int userId){
 		// 実行するSQL文を文字列として事前に設定
@@ -115,5 +115,47 @@ public class LendDAO extends ConnectionDAO{
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	/**
+	 * 貸出回数が多い順に書籍一覧を表示する
+	 * @return List 貸出回数が多い順に書籍一覧を格納したリスト
+	 *
+	 */
+	public List<BookData> sortBooks() {
+		final String SQL = "SELECT * FROM BOOKS "
+				+ "JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID "
+				+ "GROUP BY ISBN "
+				+ "ORDER BY COUNT(BOOK_ID) DESC";
+
+		// 戻り値をセットするリストの準備
+		List<BookData> bookList = new ArrayList<>();
+
+		try (Connection conn = getConnection();
+				PreparedStatement pstm = conn.prepareStatement(SQL)) {
+
+			// クエリの実行
+			ResultSet rs = pstm.executeQuery();
+
+			// DBを一行ずつ読み込んで書籍情報をインスタンスにセット
+			while (rs.next()) {
+				BookData bookData = new BookData();
+				bookData.setBookId(rs.getInt(1));           // 書籍ID
+				bookData.setTitle(rs.getString(2));         // 書籍タイトル
+				bookData.setAuthor(rs.getString(3));        // 著者
+				bookData.setPublishedDate(rs.getString(4)); // 出版日
+				bookData.setPublisher(rs.getString(5));     // 出版社
+				bookData.setDescription(rs.getString(6));   // 書籍概要
+				bookData.setIsbn(rs.getString(7));          // ISBN
+				bookData.setImageLinks(rs.getString(8));    // 表紙画像リンク
+				bookData.setPurchaseDate(rs.getString(9));  // 購入日
+
+				// インスタンスにセットした情報をリストに格納
+				bookList.add(bookData);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bookList;
 	}
 }
