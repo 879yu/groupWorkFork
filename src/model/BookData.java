@@ -8,8 +8,8 @@ public class BookData {
     private String publishedDate;
     private String publisher;
     private String description;
-    private String imageLinks;
     private String isbn;
+    private String imageLinks;
     private String purchaseDate;
 
 
@@ -24,8 +24,8 @@ public class BookData {
     		String publishedDate,
     		String publisher,
     		String description,
-    		String imageLinks,
     		String isbn,
+    		String imageLinks,
     		String purchaseDate) {
     	this.bookId        = bookId;
 		this.title         = title;
@@ -62,13 +62,15 @@ public class BookData {
 		return description;
 	}
 
-	public String getImageLinks() {
-		return imageLinks;
-	}
 
 	public String getIsbn() {
 		return isbn;
 	}
+
+	public String getImageLinks() {
+		return imageLinks;
+	}
+
 
 	public String getPurchaseDate() {
 		return purchaseDate;
@@ -99,13 +101,13 @@ public class BookData {
 		this.description = description;
 	}
 
-	public void setImageLinks(String imageLinks) {
-		this.imageLinks = imageLinks;
-	}
-
 
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
+	}
+
+	public void setImageLinks(String imageLinks) {
+		this.imageLinks = imageLinks;
 	}
 
 	public void setPurchaseDate(String purchaseDate) {

@@ -40,8 +40,8 @@ public class BookDAO extends ConnectionDAO{
 				bookData.setPublishedDate(rs.getString(4)); // 出版日
 				bookData.setPublisher(rs.getString(5));     // 出版社
 				bookData.setDescription(rs.getString(6));   // 書籍概要
-				bookData.setImageLinks(rs.getString(7));    // 表紙画像リンク
-				bookData.setIsbn(rs.getString(8));          // ISBN
+				bookData.setIsbn(rs.getString(7));          // ISBN
+				bookData.setImageLinks(rs.getString(8));    // 表紙画像リンク
 				bookData.setPurchaseDate(rs.getString(9));  // 購入日
 
 				// インスタンスにセットした情報をリストに格納

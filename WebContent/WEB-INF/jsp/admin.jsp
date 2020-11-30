@@ -17,13 +17,13 @@
 		<input type="text" value="登録する本名を入力してください">
 		<button class="btn btn-primary" type="submit">登録</button>
 	</form>
-	<form action="bookServlet" method="get">
+	<form action="/groupwork/BookServlet" method="get">
 		<button class="btn btn-primary" type="submit">登録書籍一覧</button>
 	</form>
-	<form action="UserServlet" method="get">
+	<form action="/groupwork/UserServlet" method="get">
 		<button class="btn btn-primary" type="submit">従業員一覧</button>
 	</form>
-	<form action="LendServlet" method="get">
+	<form action="/groupwork/LendServlet" method="get">
 		<button class="btn btn-primary" type="submit">貸し借り履歴一覧</button>
 	</form>
 	<script
