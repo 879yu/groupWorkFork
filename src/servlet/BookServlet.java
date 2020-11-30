@@ -29,7 +29,7 @@ public class BookServlet extends HttpServlet {
 		BookDAO bookDAO=new BookDAO();
 		bookList=bookDAO.findAllBooks();
 		request.setAttribute("bookList", bookList);
-		RequestDispatcher dsp=request.getRequestDispatcher("/registered_book.jsp");
+		RequestDispatcher dsp=request.getRequestDispatcher("/WEB-INF/jsp/registered_book.jsp");
 		dsp.forward(request, response);
 
 	}

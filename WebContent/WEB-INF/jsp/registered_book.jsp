@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,16 +21,16 @@
 		</tr>
 		<tr class="detail_info">
 			<td></td>
-			<td><c:forEach var="book_data" items="${book_dataList}">
-						<span class="title"><c:out value="${BookData.title }" /></span>
-					<span class="author"><c:out value="${BookData.author }" /></span>
-					<span class="publisher"><c:out value="${BookData.publisher }" /></span>
+			<td><c:forEach var="book_data" items="${bookList}">
+						<span class="title"><c:out value="${book_data.title }" /></span>
+					<span class="author"><c:out value="${book_data.author }" /></span>
+					<span class="publisher"><c:out value="${book_data.publisher }" /></span>
 					<span class="publish_date"><c:out
-							value="${BookData.publishedDate }" /></span>
+							value="${book_data.publishedDate }" /></span>
 					<span class="description"><c:out
-							value="${BookData.description }" /></span>
+							value="${book_data.description }" /></span>
 					<span class="image_links"><c:out
-							value="${BookData.imageLinks }" /></span></td>
+							value="${book_data.imageLinks }" /></span></td>
 			</c:forEach>
 		</tr>
 	</table>

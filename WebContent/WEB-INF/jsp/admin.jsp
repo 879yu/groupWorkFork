@@ -17,7 +17,7 @@
 		<input type="text" value="登録する本名を入力してください">
 		<button class="btn btn-primary" type="submit">登録</button>
 	</form>
-	<form action="registared_book.jsp" method="get">
+	<form action="/groupwork/BookServlet" method="get">
 		<button class="btn btn-primary" type="submit">登録書籍一覧</button>
 	</form>
 	<form action="employee_list.jsp" method="get">
