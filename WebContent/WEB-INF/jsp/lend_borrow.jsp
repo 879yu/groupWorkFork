@@ -21,18 +21,17 @@
 		<tr>
 			<td></td>
 			<td><c:forEach var="book_data" items="${book_dataList}">
-					<span class="title"><c:out value="${BookData.title }" /></span>
-					<span class="author"><c:out value="${BookData.author }" /></span>
+					<span class="title"><c:out value="${book_data.title }" /></span>
+					<span class="author"><c:out value="${book_data.author }" /></span>
 					<span class="publisher"><c:out
-							value="${BookData.publisher }" /></span>
+							value="${book_data.publisher }" /></span>
 					<span class="publish_date">"<c:out
-							value="${BookData.publishedDate }" /></span>
+							value="${book_data.publishedDate }" /></span>
 					<span class="description">"<c:out
-							value="${BookData.description }" /></span>
-					<span class="image_links"><c:out
-							value="${BookData.imageLinks }" /></span>
+							value="${book_data.description }" /></span>
+					<img src=<c:out value="${book_data.imageLinks }"/> alt="本画像" class="image_links">
 					<span class="purchase_date"><c:out
-							value="${BookData.purchasedate}" /></span></td>
+							value="${book_data.purchase_date}" /></span></td>
 			</c:forEach>
 		</tr>
 	</table>
