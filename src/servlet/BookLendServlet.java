@@ -63,7 +63,7 @@ public class BookLendServlet extends HttpServlet {
 			LendDAO lendDAO=new LendDAO();
 			bookList=lendDAO.sortBooks();
 			request.setAttribute("bookList", bookList);
-			forwardPass="/WEB-INF/jsp/lendRanking/jsp";
+			forwardPass="/WEB-INF/jsp/	.jsp";
 		}
 		RequestDispatcher dsp=request.getRequestDispatcher(forwardPass);
 		dsp.forward(request,response);
