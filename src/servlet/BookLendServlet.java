@@ -57,13 +57,14 @@ public class BookLendServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		// 検索キーワードの取得
-//		String str=request.getParameter("");
+		String serchTitle=request.getParameter("serch_title");
+		String serchTitle=request.getParameter("serch_isbn");
 		// 検索用DAOにキーワードを渡す
-//		List<> bookList=new ArrayList<>();
-//		bookList=DAO.メソッド名();
-//		request.setAttribute("bookList",bookList);
-//		RequestDispatcher dsp=request.getRequestDispatcher();
-//		dsp.forward(request,response);
+		List<> bookList=new ArrayList<>();
+		bookList=DAO.メソッド名();
+		request.setAttribute("bookList",bookList);
+		RequestDispatcher dsp=request.getRequestDispatcher();
+		dsp.forward(request,response);
 
 	}
 
