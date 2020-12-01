@@ -64,7 +64,7 @@ public class BookDAO extends ConnectionDAO{
 		// 実行するSQL文を文字列として事前に設定
 		final String SQL =
 				"INSERT INTO BOOKS "
-				+ "(title, author, publishedDate, publisher, description, imageLinks, isbn, purchaseDate)"
+				+ "(title, author, published_date, publisher, description, image_links, isbn_13, purchase_date)"
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try (Connection conn = getConnection();
