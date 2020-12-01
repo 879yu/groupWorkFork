@@ -82,11 +82,15 @@
                         <h5 class="card-title"> <p><c:out value="${book_data.author }" /></p></h5>
                         <textarea cols="60" rows="4" style="overflow:auto;" class="m-2"> <p><c:out value="${book_data.description }" /></p></textarea>
                         <p class="card-text"><p><c:out value="${book_data.publisher }" /><p><c:out value="${book_data.publishedDate }" /></p>
-                        </c:forEach>
-                        <a href="#" class="btn btn-primary float-right p-3 mt-5">　返却　</a>
-                        <p class="alert alert-dark container float-right" role="alert">
+                        					<div class="col-1">
+						<form action="#" method="get">
+						     <button type="submit" class="btn btn-outline-dark">返却</button>
+						</form>
+							</div>
+						</c:forEach>
+                      <p class="alert alert-dark container float-right" role="alert">
                             2020-11-29 ~~~~~~~~~~~~2020-11-30</p>
-                        </p>
+
                     </div>
                 </div>
 
