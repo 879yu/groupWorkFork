@@ -16,9 +16,9 @@ public class SearchBookDAO extends ConnectionDAO{
 
 		// 0の場合タイトル検索、1の場合ISBN検索
 		if(radioBtn.equals("0")) {
-			sql = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.TITLE LIKE ?";
+			sql = "SELECT * FROM BOOKS LEFT JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.TITLE LIKE ?";
 		} else if(radioBtn.equals("1")) {
-			sql = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.ISBN_13 LIKE ?";
+			sql = "SELECT * FROM BOOKS LEFT JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.ISBN_13 LIKE ?";
 		}
 
 		// 戻り値をセットするリストの準備
