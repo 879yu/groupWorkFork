@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.BookData;
 import model.BookLendDAO;
 import model.BookLendData;
-import model.LendDAO;
+import model.SearchBookDAO;
 import model.User;
 
 
@@ -30,7 +29,7 @@ public class BookLendServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String forwardPass;
+		String forwardPass = null;
 
 		// 検索キーワードの取得
 		String keyword=request.getParameter("keyword");
@@ -41,7 +40,8 @@ public class BookLendServlet extends HttpServlet {
 		if(keyword!=null && radioButton!=null) {
 			// 検索用DAOにキーワードを渡す
 			List<BookLendData> bookLendList=new ArrayList<>();
-			bookLendList=SearchBookDAO.searchBook(keyword, radioButton);
+			SearchBookDAO searchBookDAO=new SearchBookDAO();
+			bookLendList=searchBookDAO.searchBook(keyword, radioButton);
 			request.setAttribute("bookList",bookLendList);
 			forwardPass="/WEB-INF/jsp/mypage.jsp";
 
@@ -55,13 +55,13 @@ public class BookLendServlet extends HttpServlet {
 			bookLendList = bookLendDAO.findMyLendingBooks(userId);
 			request.setAttribute("bookLendList", bookLendList);
 			forwardPass="/WEB-INF/jsp/borrowing.jsp";
-		}else if() {
-			// 人気順に表示
-			List<BookData> bookList=new ArrayList<>();
-			LendDAO lendDAO=new LendDAO();
-			bookList=lendDAO.sortBooks();
-			request.setAttribute("bookList", bookList);
-			forwardPass="/WEB-INF/jsp/lendRanking/jsp";
+//		}else if() {
+//			// 人気順に表示
+//			List<BookData> bookList=new ArrayList<>();
+//			LendDAO lendDAO=new LendDAO();
+//			bookList=lendDAO.sortBooks();
+//			request.setAttribute("bookList", bookList);
+//			forwardPass="/WEB-INF/jsp/lendRanking/jsp";
 		}
 		RequestDispatcher dsp=request.getRequestDispatcher(forwardPass);
 		dsp.forward(request,response);
