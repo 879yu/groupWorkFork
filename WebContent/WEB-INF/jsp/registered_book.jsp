@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-		<%-- <%@ include file="/WEB-INF/jsp/application.jsp" %> --%>
+		<%@ include file="/WEB-INF/jsp/application.jsp" %>
 		<%@ include file="/WEB-INF/jsp/header.jsp" %>
 <!DOCTYPE html>
 <html>
@@ -18,16 +18,16 @@
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
 
-<!-- GoogleFonts　CDNの読み込み -->
-<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
-	rel="stylesheet">
-
 <!-- 自作CSSの読み込み -->
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/navibar.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/registered.css>
+
+<!-- GoogleFonts　CDNの読み込み -->
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+	rel="stylesheet">
 </head>
 
 <body>
@@ -69,31 +69,35 @@
 					</ul>
 			</nav>
 	<h1 class="lend_borrow_table">貸し借り履歴一覧</h1>
-             <!-- メインコンテンツ -->
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
-                <div class="card">
-                    <div class="card-header">
-                          <c:out value="${book_data.title }"/>
-                    </div>
-                    <div class="card-body">
-                    <c:forEach var="book_data" items="${book_dataList}">
-                          <img src=<c:out value="${book_data.imageLinks }" /> width="150"
+            <!-- メインコンテンツ -->
+			<main role="main" class="col-10 ml-sm-auto">
+				<div class="container-fluid my-2">
+					<c:forEach var="book_data" items="${bookList}">
+						<h4>
+							<c:out value="${book_data.title }" />
+							:
+							<c:out value="${book_data.author }" />
+						</h4>
+						<div>
+							<div class="row ml-5">
+								<div class="col-1">
+									<img src=<c:out value="${book_data.imageLinks }" /> width="150"
 										height="200" class="rounded" alt="...">
-                        <h5 class="card-title"> <p><c:out value="${book_data.author }" /></p></h5>
-                        <textarea cols="60" rows="4" style="overflow:auto;" class="m-2"> <p><c:out value="${book_data.description }" /></p></textarea>
-                        <p class="card-text"><p><c:out value="${book_data.publisher }" /><p><c:out value="${book_data.publishedDate }" /></p>
-                        					<div class="col-1">
-						<form action="#" method="get">
-						     <button type="submit" class="btn btn-outline-dark">返却</button>
-						</form>
+								</div>
+								<div class="col-8 m-5">
+									<p>
+										<c:out value="${book_data.description }" />
+									</p>
+								</div>
+								<div class="col-1">
+									<form action="#" method="get">
+										<button type="submit" class="btn btn-outline-dark">返却</button>
+									</form>
+								</div>
 							</div>
-						</c:forEach>
-                      <p class="alert alert-dark container float-right" role="alert">
-                            2020-11-29 ~~~~~~~~~~~~2020-11-30</p>
-
-                    </div>
-                </div>
-
+						</div>
+					</c:forEach>
+				</div>
 	<script
 		src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script

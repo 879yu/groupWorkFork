@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>登録が完了しました</h1>
+<h1>登録に失敗しました</h1>
 <a href="WEB-INF/jsp/admin.jsp">戻る</a>
 </body>
 </html>
