@@ -1,0 +1,12 @@
+.admin {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 40px;
+    color: white;
+    background-color: darkred;
+}
+
+.register {
+    margin: 0;
+    text-align: center;
+}
