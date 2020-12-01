@@ -21,16 +21,15 @@
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
 
-<!-- 自作CSSの読み込み -->
-<link rel="stylesheet" href="/groupwork/css/sidebar.css">
-<link rel="stylesheet" href="/groupwork/css/common.css">
-<link rel="stylesheet" href="/groupwork/css/main.css">
-<link rel="stylesheet" href="/groupwork/css/navibar.css">
-
 <!-- GoogleFonts　CDNの読み込み -->
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
 	rel="stylesheet">
 
+<!-- 自作CSSの読み込み -->
+<link rel="stylesheet" href="/groupwork/css/common.css">
+<link rel="stylesheet" href="/groupwork/css/navibar.css">
+<link rel="stylesheet" href="/groupwork/css/sidebar.css">
+<link rel="stylesheet" href="/groupwork/css/main.css">
 </head>
 
 <body>
@@ -114,11 +113,6 @@
 									<p>
 										<c:out value="${book_data.description }" />
 									</p>
-								</div>
-								<div class="col-1">
-									<form action="#" method="get">
-										<button type="submit" class="btn btn-outline-dark">返却</button>
-									</form>
 								</div>
 							</div>
 						</div>
