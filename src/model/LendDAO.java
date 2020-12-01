@@ -123,10 +123,8 @@ public class LendDAO extends ConnectionDAO{
 	 *
 	 */
 	public List<BookData> sortBooks() {
-		final String SQL = "SELECT * FROM BOOKS "
-				+ "JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID "
-				+ "GROUP BY ISBN "
-				+ "ORDER BY COUNT(BOOK_ID) DESC";
+		final String SQL = "SELECT * FROM BOOKS LEFT JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID "
+				+ "GROUP BY ISBN_13 ORDER BY COUNT(LEND.BOOK_ID) DESC";
 
 		// 戻り値をセットするリストの準備
 		List<BookData> bookList = new ArrayList<>();
