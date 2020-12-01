@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BookData;
+import model.BookLendDAO;
+import model.BookLendData;
 import model.LendDAO;
 import model.User;
 
@@ -27,24 +29,40 @@ public class BookLendServlet extends HttpServlet {
 	 *
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 貸出回数が多い順に表示
-		List<BookData> bookList=new ArrayList<>();
-		LendDAO lendDAO=new LendDAO();
-		bookList=lendDAO.sortBooks();
-		request.setAttribute("bookList",bookList);
-		// 従業員か管理者かの判別
-		HttpSession session=request.getSession();
-		User user=(User)session.getAttribute("user");
-		int userId=user.getUserId();
+		request.setCharacterEncoding("utf-8");
 		String forwardPass;
-		if(userId==0) {
-			// 管理者用
-			// とりあえず全書籍一覧に飛ばしてます
-			forwardPass="/WEB-INF/jsp/registered_book.jsp";
-		}else {
+
+		// 検索キーワードの取得
+		String keyword=request.getParameter("keyword");
+		String radioButton=request.getParameter("radioButton");
+		// 貸出中を表示するためのパラメータ
+		String str=request.getParameter("");
+
+		if(keyword!=null && radioButton!=null) {
+			// 検索用DAOにキーワードを渡す
+			List<BookLendData> bookLendList=new ArrayList<>();
+			bookLendList=SearchBookDAO.searchBook(keyword, radioButton);
+			request.setAttribute("bookList",bookLendList);
 			forwardPass="/WEB-INF/jsp/mypage.jsp";
+
+		}else if(str!=null) {
+			// 貸出中表示
+			HttpSession session = request.getSession();
+			User user = (User) session.getAttribute("user");
+			int userId = user.getUserId();
+			BookLendDAO bookLendDAO=new BookLendDAO();
+			List<BookLendData> bookLendList = new ArrayList<>();
+			bookLendList = bookLendDAO.findMyLendingBooks(userId);
+			request.setAttribute("bookLendList", bookLendList);
+			forwardPass="/WEB-INF/jsp/borrowing.jsp";
+		}else if() {
+			// 人気順に表示
+			List<BookData> bookList=new ArrayList<>();
+			LendDAO lendDAO=new LendDAO();
+			bookList=lendDAO.sortBooks();
+			request.setAttribute("bookList", bookList);
+			forwardPass="/WEB-INF/jsp/lendRanking/jsp";
 		}
-		// 従業員用
 		RequestDispatcher dsp=request.getRequestDispatcher(forwardPass);
 		dsp.forward(request,response);
 
@@ -52,19 +70,10 @@ public class BookLendServlet extends HttpServlet {
 	}
 
 	/**
-	 * 検索機能
+	 *
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		// 検索キーワードの取得
-		String serchTitle=request.getParameter("serch_title");
-		String serchTitle=request.getParameter("serch_isbn");
-		// 検索用DAOにキーワードを渡す
-		List<> bookList=new ArrayList<>();
-		bookList=DAO.メソッド名();
-		request.setAttribute("bookList",bookList);
-		RequestDispatcher dsp=request.getRequestDispatcher();
-		dsp.forward(request,response);
+
 
 	}
 
