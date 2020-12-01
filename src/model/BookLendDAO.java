@@ -40,7 +40,7 @@ public class BookLendDAO extends ConnectionDAO{
 				bookLendData.setImageLinks(rs.getString(8));    // 表紙画像リンク
 				bookLendData.setPurchaseDate(rs.getString(9));  // 購入日
 				bookLendData.setLendId(rs.getInt(10));          // 貸出ID
-				bookLendData.setUserId(rs.getInt(11));          // 貸出ID
+				bookLendData.setUserId(rs.getInt(11));          // ユーザーID
 				bookLendData.setLendDate(rs.getString(12));     // 購入日
 				bookLendData.setReturnDate(rs.getString(13));   // 返却日
 
