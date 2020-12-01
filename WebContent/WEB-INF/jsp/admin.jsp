@@ -14,7 +14,7 @@
 <body>
 	<h1>管理者ページ</h1>
 	<form action="/groupwork/BookServlet" method="post">
-		<input type="text" value="登録する本名を入力してください" name="isbn">
+		<input type="text" name="isbn" value="登録する本名を入力してください">
 		<button class="btn btn-primary" type="submit">登録</button>
 	</form>
 	<form action="/groupwork/BookServlet" method="get">

@@ -5,20 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.AddBookLogic;
 import model.BookDAO;
 import model.BookData;
 
 
 @WebServlet("/BookServlet")
-public class BookServlet extends HttpServlet {
+public class BookServlet extends HttpServlet implements EnvSet  {
 	private static final long serialVersionUID = 1L;
+
+	public void init(ServletConfig config) throws ServletException {
+	//proxyの設定
+	System.setProperty("https.proxyHost", J701_HTTPS_PROXY_ADDRESS);
+	System.setProperty("https.proxyPort", J701_HTTPS_PROXY_PORT);
+}
 
 	/**
 	 *
@@ -41,6 +47,7 @@ public class BookServlet extends HttpServlet {
 		// 書籍の登録
 		AddBookLogic addBookLogic=new AddBookLogic();
 		String forwardPass=addBookLogic.add(request, response);
+
 		RequestDispatcher dsp=request.getRequestDispatcher(forwardPass);
 		dsp.forward(request, response);
 
