@@ -1,0 +1,9 @@
+main {
+    padding: 70px 0 0;
+}
+
+.book_info {
+    border-bottom: 1px solid;
+    /* border-radius: 1em; */
+    border-color: #343a40;
+}
