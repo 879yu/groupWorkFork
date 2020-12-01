@@ -31,6 +31,7 @@ public class BookData {
 		this.publishedDate = publishedDate;
 		this.publisher     = publisher;
 		this.description   = description;
+		this.isbn=isbn;
 		this.imageLinks    = imageLinks;
 		this.purchaseDate  = purchaseDate;
 	}
@@ -51,6 +52,7 @@ public class BookData {
 		this.publishedDate = publishedDate;
 		this.publisher     = publisher;
 		this.description   = description;
+		this.isbn=isbn;
 		this.imageLinks    = imageLinks;
 		this.purchaseDate  = purchaseDate;
 	}
