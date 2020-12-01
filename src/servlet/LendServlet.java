@@ -30,10 +30,10 @@ public class LendServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		// 呼び出し元の判別
-//		String disc=request.getParameter("disc");
+		String disc=request.getParameter("disc");
 
 		// 画面遷移
-		String forwardPass;
+		String forwardPass=null;
 		// 日付の取得
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -43,51 +43,47 @@ public class LendServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int userId = user.getUserId();
-		
-		LendDAO lendDAO = new LendDAO();
-		List<BookData> lendList=new ArrayList<>();
-		List<BookLendData> bookLendList = new ArrayList<>();
 
-//		switch(disc) {
-//		case "":	// 貸出履歴の表示
+		LendDAO lendDAO;
+		List<BookData> lendList;
+		List<BookLendData> bookLendList;
 
+		switch(disc) {
+			case "history":	// 貸出履歴の表示
+				lendDAO=new LendDAO();
+				lendList=new ArrayList<>();
+				if(userId==0) {
+					// 全履歴表示（admin）
+					lendList = lendDAO.findAllLendHistory();
+				}else {
+					// 個人履歴表示
+					lendList = lendDAO.findMyLendHistory(userId);
+				}
+				request.setAttribute("lendList", lendList);
+				forwardPass="/WEB-INF/jsp/lend_borrow.jsp";
+				break;
 
-		if(userId==0) {
-			// 全履歴表示（admin）
-			lendList = lendDAO.findAllLendHistory();
-		}else {
-			// 個人履歴表示
-			lendList = lendDAO.findMyLendHistory(userId);
-		}
-			request.setAttribute("lendList", lendList);
-			forwardPass="/WEB-INF/jsp/lend_borrow.jsp";
-//			break;
-//
-//		case "":
-//
-//		case "":	// 貸出処理
-//			LendDAO lendDAO=new LendDAO();
-//			boolean isLend=lendDAO.メソッド名(date);
-//			if(isLend) {
-//				forwardPass="/WEB-INF/jsp/success.jsp";
-//			}else {
-//				forwardPass="/WEB-INF/jsp/fail.jsp";
-//			}
-//			break;
-//
-//		case "":	// 返却処理
-//			LendDAO lendDAO=new LendDAO();
-//			int lendId = (int) request.getAttribute("lendId");
-//			boolean isReturn = lendDAO.setRetrunDate(lendId, date);
-//			if(isLend) {
-//				forwardPass="/WEB-INF/jsp/success.jsp";
-//			}else {
-//				forwardPass="/WEB-INF/jsp/fail.jsp";
-//			}
+			case "lend":// 貸出処理
+				lendDAO=new LendDAO();
+				lendList=new ArrayList<>();
+				boolean isLend=lendDAO.メソッド名(date);
+				if(isLend) {
+					forwardPass="/WEB-INF/jsp/success.jsp";
+				}else {
+					forwardPass="/WEB-INF/jsp/fail.jsp";
+				}
+				break;
 
-
-
-//		}
+			case "return":	// 返却処理
+				lendDAO=new LendDAO();
+				lendList=new ArrayList<>();
+				int lendId = (int) request.getAttribute("lendId");
+				boolean isReturn = lendDAO.setRetrunDate(lendId, date);
+				if(isLend) {
+					forwardPass="/WEB-INF/jsp/success.jsp";
+				}else {
+					forwardPass="/WEB-INF/jsp/fail.jsp";
+				}
 
 	RequestDispatcher dsp = request.getRequestDispatcher(forwardPass);
 	dsp.forward(request,response);
