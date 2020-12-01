@@ -16,6 +16,7 @@ nav {
 .sidebar-sticky {
     position: -webkit-sticky;
     position: sticky;
+    height: 1000px
 }
 
 .sidebar-sticky {
