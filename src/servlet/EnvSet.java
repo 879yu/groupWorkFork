@@ -1,4 +1,4 @@
-package model;
+package servlet;
 
 public interface EnvSet {
 	//googleの検索URL、PROXY等定義

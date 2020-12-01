@@ -64,7 +64,7 @@ public class BookDAO extends ConnectionDAO{
 		// 実行するSQL文を文字列として事前に設定
 		final String SQL =
 				"INSERT INTO BOOKS "
-				+ "(title, author, publishedDate, publisher, description, imageLinks, isbn, purchaseDate)"
+				+ "(title, author, published_date, publisher, description, isbn_13, image_links, purchase_date)"
 				+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try (Connection conn = getConnection();
@@ -79,8 +79,8 @@ public class BookDAO extends ConnectionDAO{
 			pstm.setString(3,bookData.getPublishedDate()); // 出版日
 			pstm.setString(4,bookData.getPublisher());     // 出版社
 			pstm.setString(5,bookData.getDescription());   // 書籍概要
-			pstm.setString(6,bookData.getImageLinks());    // 表紙画像リンク
-			pstm.setString(7,bookData.getIsbn());          // ISBN
+			pstm.setString(6,bookData.getIsbn());          // ISBN
+			pstm.setString(7,bookData.getImageLinks());    // 表紙画像リンク
 			pstm.setString(8,bookData.getPurchaseDate());  // 購入日
 
 				// 更新された行数を変数に格納（クエリ成功なら1が格納される）

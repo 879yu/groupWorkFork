@@ -1,6 +1,8 @@
 package model;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -30,6 +32,11 @@ public class LoginLogic {
 			forwardPass= "/WEB-INF/jsp/admin.jsp";
 		}else {
 			forwardPass= "/WEB-INF/jsp/mypage.jsp";
+			// 登録書籍一覧の表示
+			List<BookData> bookList=new ArrayList<>();
+			BookDAO bookDAO=new BookDAO();
+			bookList=bookDAO.findAllBooks();
+			request.setAttribute("bookList", bookList);
 		}
 
 		// セッションスコープの利用開始
