@@ -23,89 +23,76 @@ import model.User;
 public class LendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-
 	/**
 	 * 貸出履歴表示、貸出・返却処理
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		// ボタン（？）の判別
-		// aタグ使うのかbuttonタグ使うのかによって修正します
-		String button=request.getParameter("button");
+		// 呼び出し元の判別
+//		String disc=request.getParameter("disc");
+		// 画面遷移
+		String forwardPass;
+		// 日付の取得
+		Date d = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String date = sdf.format(d);
 
-		LendDAO lendDAO=new LendDAO();
-		RequestDispatcher dsp;
-		Date date;
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+		// 従業員か管理者かの判別
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute("user");
+		int userId = user.getUserId();
 
+//		switch(disc) {
+//		case "":	// 貸出履歴の表示
 
-		switch(button) {
-		// 履歴ボタン
-		case "history":
-			// 管理者か従業員か判別
-			String disc=request.getParameter("disc");
-			List<LendData> lendList = new ArrayList<>();
+		LendDAO lendDAO = new LendDAO();
+		List<LendData> lendList = new ArrayList<>();
 
-			switch(disc) {
-			// 全従業員の履歴表示
-			case "admin":
-				lendList=lendDAO.findAllLendHistory();
-				break;
-
-			// 個人の履歴表示
-			case "employee":
-				// userIdの取得
-				HttpSession session=request.getSession();
-				User user=(User) session.getAttribute("user");
-				int userId=user.getUserId();
-				lendList=lendDAO.findMyLendBooks(userId);
-
-			}
-
-			request.setAttribute("lendList", lendList);
-			dsp=request.getRequestDispatcher("/WEB-INF/jsp/lend_borrow.jsp.jsp");
-
-			break;
-
-		// 貸出中ボタン
-		case "lending":
-			List<BookData> bookList=new ArrayList<>();
-			bookList=lendDAO.findMyLendingBooks();
-			dsp=request.getRequestDispatcher("/WEB-INF/jsp/貸出中一覧.jsp");
-			break;
-
-		// 貸出ボタン（途中）
-		case "lend":
-			// 貸出日（今日）の日付を取得
-			date=new Date();
-			String lendDate=sdf.format(date);
-
-			break;
-
-		// 返却ボタン（途中）
-		case "return":
-			// jspからLendテーブルのidを取得
-			// わからない
-			int lendId=(int)request.getAttribute("lendId");
-
-			// 返却日（今日）の日付を取得
-			date=new Date();
-    		String returnDate=sdf.format(date);
-
-			boolean isReturn=lendDAO.setRetrunDate(lendId, returnDate);
-			if(isReturn) {
-				dsp=request.getRequestDispatcher("/WEB-INF/jsp/success.jsp");
-
-			}else {
-				dsp=request.getRequestDispatcher("/WEB-INF/jsp/fail.jsp");
-
-			}
+		if(userId==0) {
+			// 全履歴表示（admin）
+			lendList = lendDAO.findAllLendHistory();
+		}else {
+			// 個人履歴表示
+			lendList = lendDAO.findMyLendBooks(userId);
 		}
+			request.setAttribute("lendList", lendList);
+			forwardPass="/WEB-INF/jsp/lend_borrow.jsp";
+//			break;
+//
+//		case "":	// 貸出中表示
+			List<BookData> bookList = new ArrayList<>();
+			bookList = lendDAO.findMyLendBooks(userId);
+			request.setAttribute("lendList", bookList);
+			forwardPass="/WEB-INF/jsp/borrowing.jsp";
+//			break;
+//
+//		case "":	// 貸出処理
+//			LendDAO lendDAO=new LendDAO();
+//			boolean isLend=lendDAO.メソッド名(date);
+//			if(isLend) {
+//				forwardPass="/WEB-INF/jsp/success.jsp";
+//			}else {
+//				forwardPass="/WEB-INF/jsp/fail.jsp";
+//			}
+//			break;
+//
+//		case "":	// 返却処理
+//			LendDAO lendDAO=new LendDAO();
+//			int lendId = (int) request.getAttribute("lendId");
+//			boolean isReturn = lendDAO.setRetrunDate(lendId, date);
+//			if(isLend) {
+//				forwardPass="/WEB-INF/jsp/success.jsp";
+//			}else {
+//				forwardPass="/WEB-INF/jsp/fail.jsp";
+//			}
 
-		dsp.forward(request, response);
+//		}
 
+	RequestDispatcher dsp = request.getRequestDispatcher(forwardPass);
+	dsp.forward(request,response);
 
-	}
+}
 
 //	/**
 //	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -1,42 +1,26 @@
 package model;
 
-public class BookData {
+public class BookLendData{
 
-	private int bookId;
-    private String title;
-    private String author;
-    private String publishedDate;
-    private String publisher;
-    private String description;
-    private String isbn;
-    private String imageLinks;
-    private String purchaseDate;
+	private int bookId;           // 1
+    private String title;         // 2
+    private String author;        // 3
+    private String publishedDate; // 4
+    private String publisher;     // 5
+    private String description;   // 6
+    private String isbn;          // 7
+    private String imageLinks;    // 8
+    private String purchaseDate;  // 9
+    private int lendId;          // 10
+	private int userId;          // 11
+	private String lendDate;     // 12
+	private String returnDate;   // 13
 
-
-    // デフォルトコンストラクタ
-    public BookData() {}
+ // デフォルトコンストラクタ
+    public BookLendData() {}
 
     //コンストラクタ
-    public BookData(
-    		String title,
-    		String author,
-    		String publishedDate,
-    		String publisher,
-    		String description,
-    		String isbn,
-    		String imageLinks,
-    		String purchaseDate) {
-		this.title         = title;
-		this.author        = author;
-		this.publishedDate = publishedDate;
-		this.publisher     = publisher;
-		this.description   = description;
-		this.isbn=isbn;
-		this.imageLinks    = imageLinks;
-		this.purchaseDate  = purchaseDate;
-	}
-
-    public BookData(
+    public BookLendData(
     		int bookId,
     		String title,
     		String author,
@@ -45,16 +29,23 @@ public class BookData {
     		String description,
     		String isbn,
     		String imageLinks,
-    		String purchaseDate) {
+    		String purchaseDate,
+    		int lendId,
+    		int userId,
+    		String lendDate,
+    		String returnDate) {
     	this.bookId        = bookId;
 		this.title         = title;
 		this.author        = author;
 		this.publishedDate = publishedDate;
 		this.publisher     = publisher;
 		this.description   = description;
-		this.isbn=isbn;
 		this.imageLinks    = imageLinks;
 		this.purchaseDate  = purchaseDate;
+		this.lendId = lendId;
+		this.userId = userId;
+		this.lendDate = lendDate;
+		this.returnDate = returnDate;
 	}
 
     //ゲッターメソッド
@@ -95,6 +86,21 @@ public class BookData {
 	public String getPurchaseDate() {
 		return purchaseDate;
 	}
+	public int getLendId() {
+		return lendId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public String getLendDate() {
+		return lendDate;
+	}
+
+	public String getReturnDate() {
+		return returnDate;
+	}
 
 	// セッターメソッド
 	public void setBookId(int bookId) {
@@ -133,5 +139,19 @@ public class BookData {
 	public void setPurchaseDate(String purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
+	public void setLendId(int lendId) {
+		this.lendId = lendId;
+	}
 
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public void setLendDate(String lendDate) {
+		this.lendDate = lendDate;
+	}
+
+	public void setReturnDate(String returnDate) {
+		this.returnDate = returnDate;
+	}
 }
