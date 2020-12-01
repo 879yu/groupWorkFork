@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.BookData;
+import model.BookLendData;
 import model.LendDAO;
-import model.LendData;
 import model.User;
 
 @WebServlet("/LendServlet")
@@ -31,6 +31,7 @@ public class LendServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		// 呼び出し元の判別
 //		String disc=request.getParameter("disc");
+
 		// 画面遷移
 		String forwardPass;
 		// 日付の取得
@@ -42,30 +43,27 @@ public class LendServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("user");
 		int userId = user.getUserId();
+		
+		LendDAO lendDAO = new LendDAO();
+		List<BookData> lendList=new ArrayList<>();
+		List<BookLendData> bookLendList = new ArrayList<>();
 
 //		switch(disc) {
 //		case "":	// 貸出履歴の表示
 
-		LendDAO lendDAO = new LendDAO();
-		List<LendData> lendList = new ArrayList<>();
 
 		if(userId==0) {
 			// 全履歴表示（admin）
 			lendList = lendDAO.findAllLendHistory();
 		}else {
 			// 個人履歴表示
-			lendList = lendDAO.findMyLendBooks(userId);
+			lendList = lendDAO.findMyLendHistory(userId);
 		}
 			request.setAttribute("lendList", lendList);
 			forwardPass="/WEB-INF/jsp/lend_borrow.jsp";
 //			break;
 //
-//		case "":	// 貸出中表示
-			List<BookData> bookList = new ArrayList<>();
-			bookList = lendDAO.findMyLendBooks(userId);
-			request.setAttribute("lendList", bookList);
-			forwardPass="/WEB-INF/jsp/borrowing.jsp";
-//			break;
+//		case "":
 //
 //		case "":	// 貸出処理
 //			LendDAO lendDAO=new LendDAO();
@@ -86,6 +84,8 @@ public class LendServlet extends HttpServlet {
 //			}else {
 //				forwardPass="/WEB-INF/jsp/fail.jsp";
 //			}
+
+
 
 //		}
 

@@ -1,4 +1,4 @@
-package model;
+package servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import model.BookDAO;
+import model.BookData;
 
 
 public class AddBookLogic implements EnvSet {
@@ -164,7 +169,15 @@ public class AddBookLogic implements EnvSet {
     		// imageの取得
     		String imageLinks=null;
     		try{
-    			imageLinks = volumeInfo.getString("imageLinks");
+        		JSONArray arr=new JSONArray();
+                List<String> list = new ArrayList<>();
+
+                for(Object str : arr) {
+//                    list.add;
+                }
+//                JSONObject data=list.get(1);
+//                imageLinks=data.getString("thumbnail");
+//    			imageLinks = volumeInfo.getString("imageLinks");
 
     		}catch(JSONException e){
     			// 画像なし
@@ -178,8 +191,8 @@ public class AddBookLogic implements EnvSet {
 
     		//検索結果データの追加
     		BookData bookData=new BookData( title,  firstAuthor,  publishedDate,  publisher,  description,
-    				imageLinks, isbn, purchaseDate);
-    		request.setAttribute("BookData",bookData);
+    				isbn, imageLinks,  purchaseDate);
+    		request.setAttribute("bookData",bookData);
 
     		// DAOに接続してinsert
     		BookDAO bookDAO=new BookDAO();
@@ -188,13 +201,14 @@ public class AddBookLogic implements EnvSet {
     		if(isAdd) {
             	forwardPass= "/WEB-INF/jsp/success.jsp";
             	// リクエストパラメータに保存
-        		request.setAttribute("bookData",bookData);
+//        		request.setAttribute("bookData",bookData);
     		}else {
+    			System.out.println("insert失敗");
     			forwardPass="/WEB-INF/jsp/fail.jsp";
     		}
 
         }catch(Exception e){
-        	//例外発生時、error.jspへフォワードする
+        	e.printStackTrace();
         	forwardPass= "/WEB-INF/jsp/fail.jsp";
         }
 

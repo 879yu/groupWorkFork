@@ -37,6 +37,7 @@ public class LoginLogic {
 			BookDAO bookDAO=new BookDAO();
 			bookList=bookDAO.findAllBooks();
 			request.setAttribute("bookList", bookList);
+
 		}
 
 		// セッションスコープの利用開始
