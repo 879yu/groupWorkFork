@@ -6,9 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -169,15 +167,18 @@ public class AddBookLogic implements EnvSet {
     		// imageの取得
     		String imageLinks=null;
     		try{
-        		JSONArray arr=new JSONArray();
-                List<String> list = new ArrayList<>();
-
-                for(Object str : arr) {
-//                    list.add;
-                }
+//        		JSONArray arr=new JSONArray();
+//                List<String> list = new ArrayList<>();
+//
+//                for(Object str : arr) {
+////                    list.add;
+//                }
 //                JSONObject data=list.get(1);
 //                imageLinks=data.getString("thumbnail");
 //    			imageLinks = volumeInfo.getString("imageLinks");
+    			JSONArray images=volumeInfo.getJSONArray("imageLinks");
+    			JSONObject image=images.getJSONObject(1);
+    			imageLinks=image.getString("thumbnail");
 
     		}catch(JSONException e){
     			// 画像なし
