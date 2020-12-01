@@ -1,6 +1,6 @@
 package model;
 
-public class BookLendData {
+public class BookLendData{
 
 	private int bookId;           // 1
     private String title;         // 2
