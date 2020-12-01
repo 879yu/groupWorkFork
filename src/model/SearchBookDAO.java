@@ -16,16 +16,19 @@ public class SearchBookDAO extends ConnectionDAO{
 
 		// 0の場合タイトル検索、1の場合ISBN検索
 		if(radioBtn.equals("0")) {
-			sql = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.TITLE=" + keyword ;
+			sql = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.TITLE LIKE ?";
 		} if(radioBtn.equals("1")) {
-			sql = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.ISBN =" + keyword;
+			sql = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE BOOKS.ISBN LIKE ?";
 		}
 
 		// 戻り値をセットするリストの準備
-		List<BookLendData> lendingList = new ArrayList<>();
+		List<BookLendData> searchResultList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
 				PreparedStatement pstm = conn.prepareStatement(sql)) {
+
+			// プレースホルダに取得したデータをセット
+			pstm.setString(1,"%" + keyword + "%");
 
 			// クエリの実行
 			ResultSet rs = pstm.executeQuery();
@@ -48,12 +51,12 @@ public class SearchBookDAO extends ConnectionDAO{
 				bookLendData.setReturnDate(rs.getString(13));   // 返却日
 
 				// インスタンスにセットした情報をリストに格納
-				lendingList.add(bookLendData);
+				searchResultList.add(bookLendData);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return lendingList;
+		return searchResultList;
 	}
 
 }
