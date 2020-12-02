@@ -94,7 +94,7 @@ public class LendServlet extends HttpServlet {
 	RequestDispatcher dsp = request.getRequestDispatcher(forwardPass);
 	dsp.forward(request,response);
 
-}
+}}
 
 //	/**
 //	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

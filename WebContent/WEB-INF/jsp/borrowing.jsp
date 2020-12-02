@@ -75,9 +75,10 @@
 						</a></li>
 
 						<!-- 返却 -->
-						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?disc=lend"> <span
+						<li class="nav-item"><a class="nav-link"
+							href="/groupwork/BookLendServlet?disc=lending"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-undo-alt"></i>
-								貸出中一覧
+								本を返却
 						</a></li>
 
 						<!-- <li class="nav-item"><a class="nav-link" href="#"> <span
@@ -104,7 +105,7 @@
 							<c:out value="${book_data.author }" />
 						</h4>
 						<h5>
-							<c:out value="${book_data.lendDate }" />
+							<c:out value="${book_data.userId }" />
 							からレンタル中
 						</h5>
 						<div>

@@ -18,8 +18,8 @@
 	<h1 class="admin">管理者ページ</h1>
 	<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 	<div class="register">
-		<form action="/groupwork/BookServlet" method="post">
-			<input type="text" name="isbn" placeholder="本を登録" class="insert_book_name">
+		<form action="" method="post">
+				<input type="text" placeholder="本を登録" class="insert_book_name">
 			<button class="btn btn-primary" type="submit">登録</button>
 		</form>
 	</div>
@@ -36,15 +36,15 @@
 				<div>
 					<div class="row ml-5">
 						<div class="col-1">
-							<img src=<c:out value="${book_data.imageLinks }"/> alt="本画像"
-								class="image_links">
+							<img src=<c:out value="${book_data.imageLinks }" /> width="150"
+										height="200" class="rounded" alt="...">
 						</div>
 						<div class="col-8 m-5">
 							<p>
 								<c:out value="${book_data.description }" />
 							</p>
 						</div>
-						<div class="col-1">
+						<div class="col-1
 							<form action="#" method="get">
 								<button type="submit" class="btn btn-outline-dark">返却</button>
 							</form>
