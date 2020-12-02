@@ -68,7 +68,7 @@
 						</a></li>
 					</ul>
 			</nav>
-	<h1 class="lend_borrow_table">貸し借り履歴一覧</h1>
+	<h1 class="lend_borrow_table">登録書籍一覧</h1>
             <!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
@@ -90,7 +90,7 @@
 									</p>
 								</div>
 								<div class="col-1">
-									<form action="#" method="get">
+									<form action="/groupwork/LendServlet" method="get">
 										<button type="submit" class="btn btn-outline-dark">返却</button>
 									</form>
 								</div>

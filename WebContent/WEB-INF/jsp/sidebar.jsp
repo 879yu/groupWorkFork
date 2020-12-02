@@ -22,7 +22,7 @@
 ​
                         <!-- 返却 -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/groupwork/LendServlet"
+                            <a class="nav-link" href="/groupwork/LendServlet?disc=history"
 					method="get" class="le_bo_list">貸し借り履歴一覧
                             </a>
                         </li>

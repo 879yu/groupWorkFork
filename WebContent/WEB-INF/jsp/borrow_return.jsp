@@ -22,7 +22,7 @@
 	crossorigin="anonymous" />
 
 <<<<<<< HEAD
-<!-- 自作CSSの読み込み -->
+	<!-- 自作CSSの読み込み -->
 <link rel="stylesheet" href="/groupwork/css/common.css">
 <link rel="stylesheet" href="/groupwork/css/navibar.css">
 <link rel="stylesheet" href="/groupwork/css/sidebar.css">
