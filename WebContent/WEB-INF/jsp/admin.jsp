@@ -13,21 +13,17 @@
 	crossorigin="anonymous">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/admin.css">
-
-<!-- GoogleFonts　CDNの読み込み -->
-<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
-	rel="stylesheet">
 <meta charset="UTF-8">
 </head>
 <body>
-<h1 class="admin">管理者ページ</h1>
-	<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
-	<div class="register">
-		<form action="/groupwork/BookServlet" method="post">
-			<input type="text" placeholder="本を登録" class="insert_book_name" name="isbn">
-			<button class="btn btn-primary" type="submit">登録</button>
+		<h1 class="admin">管理者ページ</h1>
+				<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
+				<div class="register">
+			<form action="" method="post">
+				<input type="text" placeholder="本を登録" class="insert_book_name">
+				<button class="btn btn-primary" type="submit">登録</button>
 		</form>
-	</div>
+		</div>
 <!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
@@ -49,9 +45,8 @@
 									</p>
 								</div>
 								<div class="col-1">
-									<form action="/groupwork/BookServlet" method="post">
-									<input type="text" placeholder="本の登録" name="isbn">
-										<button type="submit" class="btn btn-outline-dark">登録</button>
+									<form action="#" method="get">
+										<button type="submit" class="btn btn-outline-dark">返却</button>
 									</form>
 								</div>
 							</div>
