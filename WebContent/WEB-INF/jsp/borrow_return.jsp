@@ -23,12 +23,6 @@
 
 <<<<<<< HEAD
 	<!-- 自作CSSの読み込み -->
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/navibar.css">
-<link rel="stylesheet" href="css/sidebar.css">
-<link rel="stylesheet" href="css/main.css">
-=======
-<!-- 自作CSSの読み込み -->
 <link rel="stylesheet" href="/groupwork/css/common.css">
 <link rel="stylesheet" href="/groupwork/css/navibar.css">
 <link rel="stylesheet" href="/groupwork/css/sidebar.css">
@@ -38,7 +32,13 @@
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
 	rel="stylesheet">
 
->>>>>>> refs/heads/plobably_final_branch
+=======
+	<!-- 自作CSSの読み込み -->
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/navibar.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/main.css">
+>>>>>>> refs/remotes/origin/master
 </head>
 
 <!-- GoogleFonts　CDNの読み込み -->
@@ -111,7 +111,7 @@
 			<!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
-					<c:forEach var="book_data" items="${bookList}">
+					<c:forEach var="book_data" items="${bookLendList}">
 						<h4>
 							<c:out value="${book_data.title }" />
 							:

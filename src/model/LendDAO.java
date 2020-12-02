@@ -156,7 +156,6 @@ public class LendDAO extends ConnectionDAO{
 		}
 		return bookList;
 	}
-
 	/**
 	 * 本が貸し出された時、lendテーブルに新規貸出情報をinsertする
 	 * @param userId
