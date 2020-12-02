@@ -21,6 +21,7 @@
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
 
+<<<<<<< HEAD
 <!-- 自作CSSの読み込み -->
 <link rel="stylesheet" href="/groupwork/css/common.css">
 <link rel="stylesheet" href="/groupwork/css/navibar.css">
@@ -31,7 +32,19 @@
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
 	rel="stylesheet">
 
+=======
+	<!-- 自作CSSの読み込み -->
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/navibar.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/main.css">
+>>>>>>> refs/remotes/origin/master
 </head>
+
+<!-- GoogleFonts　CDNの読み込み -->
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+	rel="stylesheet">
+
 
 <body>
 	<!-- ナビゲーションバー（全ページ固定） -->
@@ -41,16 +54,14 @@
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">会社名</a>
 
 			<!-- 画面遷移先を指定する -->
-			<form class="form-inline w-100" action="#" method="GET">
-				<label for="book_title" class="text-white">書籍タイトル：</label> <input
-					name="serch_title" class="form-control form-control-dark w-25 m-2"
-					type="text" id="book_title" placeholder="タイトルで検索" aria-label="検索">
-				<label for="book_isbn" class="text-white"> ISBN：</label> <input
-					name="serch_isbn"
-					class="form-control form-control-dark w-25 m-2 mr-3" type="text"
-					id="book_isbn" placeholder="ISBNで検索" aria-label="検索">
-				<button class="btn btn-outline-light m-2 my-sm-0" type="submit">検索</button>
-			</form>
+			<form class="form-inline w-100" action="/groupwork/BookLendServlet" method="GET">
+                <p class="
+                    text-white"><input type="radio" name="radioButton" value="0" checked="checked">タイトル</p>
+                <p class="
+                    text-white"><input type="radio" name="radioButton" value="1">ISBN</p>
+                <input name="keyword" class="form-control form-control-dark w-50 m-2" type="text" id="book_title" placeholder="タイトルまたはISBNで検索" aria-label="検索">
+                <button class="btn btn-outline-light m-1 my-sm-0" type="submit">検索</button>
+            </form>
 			<ul class="navbar-nav px-3">
 				<li class="nav-item text-nowrap"><a class="nav-link" href="#">（ユーザー名）さん</a>
 				</li>
@@ -66,28 +77,30 @@
 				<div class="sidebar-sticky">
 					<ul class="nav flex-column">
 
-						<!-- 書籍データを全て表示 -->
-						<li class="nav-item"><a class="nav-link active" href="#">
+						<!-- ランキングを表示 -->
+						<li class="nav-item"><a class="nav-link active" href="/groupwork/BookLendServlet?'disc'='ranking'">
 								<span data-feather="home"></span> <i class="fas fa-list"></i>
-								蔵書一覧 <span class="sr-only">(現在位置)</span>
+								ランキング
 						</a></li>
 
-						<!-- 貸出中の書籍を表示 -->
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						<!-- 貸出履歴を表示 -->
+						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='history'"> <span
 								data-feather="file"></span> <i class="fas fa-history"></i> 貸出履歴
 						</a></li>
 
 						<!-- 返却 -->
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='lend'"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-undo-alt"></i>
-								本を返却
+								貸出中一覧
 						</a></li>
 
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						<!-- <li class="nav-item"><a class="nav-link" href="#"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-cog"></i>
 								設定
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						</a></li> -->
+
+						<!-- welcomeページに戻る -->
+						<li class="nav-item"><a class="nav-link" href="/groupwork/WelcomeServlet"> <span
 								data-feather="users"></span> <i class="fas fa-sign-out-alt"></i>
 								ログアウト
 						</a></li>
@@ -105,9 +118,9 @@
 							<c:out value="${book_data.author }" />
 						</h4>
 						<h5>
-							<c:out value="${book_data.lendDate }" />
+							貸出日<c:out value="${book_data.lendDate }" />
 							:
-							<c:out value="${book_data.returnDate }" />
+							返却日<c:out value="${book_data.returnDate }" />
 						</h5>
 						<div>
 							<div class="row ml-5">
