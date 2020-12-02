@@ -59,7 +59,7 @@ public class BookLendDAO extends ConnectionDAO{
 	 */
 	public List<BookLendData> findMyLendingBooks(int userId){
 		// 実行するSQL文を文字列として事前に設定
-		final String SQL = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID";
+		final String SQL = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE LEND.USER_ID = " + userId;
 
 		// 戻り値をセットするリストの準備
 		List<BookLendData> lendingList = new ArrayList<>();
