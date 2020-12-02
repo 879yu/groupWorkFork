@@ -3,7 +3,7 @@
 body {
 	margin: 0;
 	padding: 0;
-	background-image: url("/groupwork/img/maple.jpg");
+	/* background-image: url("/groupwork/img/maple.jpg");*/
 	background-size: cover;
 	/* background-color: #17a2b8; */
 	height: 100vh;
