@@ -19,6 +19,12 @@ public class LendData {
 		this.returnDate = returnDate;
 	}
 
+	public LendData(int userId, int bookId, String lendDate) {
+		this.userId = userId;
+		this.bookId = bookId;
+		this.lendDate = lendDate;
+	}
+
 	// ゲッターメソッド
 	public int getLendId() {
 		return lendId;

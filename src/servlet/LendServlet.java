@@ -23,6 +23,8 @@ import model.User;
 @WebServlet("/LendServlet")
 public class LendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	// 画面遷移
+	String forwardPass;
 
 	/**
 	 * 貸出履歴表示、貸出・返却処理
@@ -31,10 +33,10 @@ public class LendServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		// 呼び出し元の判別
-		String disc=request.getParameter("disc");
+		String[] prms=request.getParameterValues("disc");
+		String disc = prms[0];
 
-		// 画面遷移
-		String forwardPass=null;
+
 		// 日付の取得
 		Date d = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
@@ -49,58 +51,73 @@ public class LendServlet extends HttpServlet {
 		List<BookData> lendList;
 		List<BookLendData> bookLendList;
 		int lendId;
+//		System.out.println(disc);
 
-		switch(disc) {
-			case "history":	// 貸出履歴の表示
-				lendDAO=new LendDAO();
-				lendList=new ArrayList<>();
-				if(userId==0) {
-					// 全履歴表示（admin）
-					lendList = lendDAO.findAllLendHistory();
-				}else {
-					// 個人履歴表示
-					lendList = lendDAO.findMyLendHistory(userId);
-				}
-				request.setAttribute("lendList", lendList);
-				forwardPass="/WEB-INF/jsp/borrow_return.jsp";
-				break;
 
-			case "lend":// 貸出処理
-				lendDAO=new LendDAO();
-				lendList=new ArrayList<>();
-				// ****jspから受け取る****
-				int bookId=(int)request.getAttribute("bookId");
+		//		switch(disc) {
+		if (disc.equals("history")) {
 
-				LendData lendData=new LendData(lendId, userId, bookId, date, null);
-				boolean isLend=lendDAO.setLendData(lendData);
-				if(isLend) {
-					forwardPass="/WEB-INF/jsp/success.jsp";
-				}else {
-					forwardPass="/WEB-INF/jsp/fail.jsp";
-				}
-				break;
+			//			case "history":	// 貸出履歴の表示
+			lendDAO = new LendDAO();
+			lendList = new ArrayList<>();
+			if (userId == 0) {
+				// 全履歴表示（admin）
+				lendList = lendDAO.findAllLendHistory();
+			} else {
+				// 個人履歴表示
+				lendList = lendDAO.findMyLendHistory(userId);
+			}
+			request.setAttribute("lendList", lendList);
+			forwardPass = "/WEB-INF/jsp/borrow_return.jsp";
+			//				break;
+		} else if (disc.equals("lend")) {
 
-			case "return":	// 返却処理
-				lendDAO=new LendDAO();
-				lendList=new ArrayList<>();
-				lendId = (int) request.getAttribute("lendId");
-				boolean isReturn = lendDAO.setRetrunDate(lendId, date);
-				if(isLend) {
-					forwardPass="/WEB-INF/jsp/success.jsp";
-				}else {
-					forwardPass="/WEB-INF/jsp/fail.jsp";
-				}
 
-	RequestDispatcher dsp = request.getRequestDispatcher(forwardPass);
-	dsp.forward(request,response);
+			//			case "lend":// 貸出処理
+			lendDAO = new LendDAO();
+			lendList = new ArrayList<>();
+			// ****jspから受け取る****
+//			int bookId = (int) request.getAttribute("bookId");
+			int bookId=Integer.parseInt(prms[1]);
+//			System.out.println(bookId);
+//			System.out.println(userId);
 
-}}
+			LendData lendData = new LendData(userId, bookId, date);
+			boolean isLend = lendDAO.setLendData(lendData);
+			if (isLend) {
+				System.out.println("貸し出し成功");
+				forwardPass = "/WEB-INF/jsp/success.jsp";
+			} else {
+				System.out.println("貸し出し失敗");
 
-//	/**
-//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-//	 */
-//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		// TODO Auto-generated method stub
-//	}
+				forwardPass = "/WEB-INF/jsp/fail.jsp";
+			}
+			//				break;
+		} else if (disc.equals("return")) {
+
+			//			case "return":	// 返却処理
+			lendDAO = new LendDAO();
+			lendList = new ArrayList<>();
+			lendId = (int) request.getAttribute("lendId");
+			boolean isReturn = lendDAO.setRetrunDate(lendId, date);
+			if (isReturn) {
+				forwardPass = "/WEB-INF/jsp/success.jsp";
+			} else {
+				forwardPass = "/WEB-INF/jsp/fail.jsp";
+			}
+
+		}
+		System.out.println(forwardPass);
+		RequestDispatcher dsp = request.getRequestDispatcher(forwardPass);
+		dsp.forward(request, response);
+
+	}
+
+	//	/**
+	//	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	//	 */
+	//	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//		// TODO Auto-generated method stub
+	//	}
 
 }

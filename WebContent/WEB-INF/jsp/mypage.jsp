@@ -124,9 +124,10 @@
 								</div>
 								<c:choose>
 									<c:when test="${book_data.lendDate == null }">
-										<from action="/groupwork/LendServlet?disc=lend" method="GET">
+										<form action="/groupwork/LendServlet?disc=lend" method="GET">
+										<input type="hidden" name="disc" value="${ book_data.bookId }">
 										<button type="submit" class="btn btn-outline-dark">借りる</button>
-										</from>
+										</form>
 									</c:when>
 									<c:otherwise>
 											<button type="submit" class="btn btn-outline-dark" disabled>返却待ち</button>
