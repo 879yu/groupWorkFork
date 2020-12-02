@@ -114,7 +114,7 @@
 									</p>
 								</div>
 								<div class="col-1">
-									<form action="/groupwork/LendServlet" method="get">
+									<form action="/groupwork/LendServlet?disc=return" method="get">
 										<button type="submit" class="btn btn-outline-dark">返却</button>
 									</form>
 								</div>
