@@ -151,6 +151,8 @@ public class AddBookLogic implements EnvSet {
 
 				//titleの取得
 				String title = volumeInfo.getString("title");
+				System.out.println(title);
+
 
 				//authorsの取得
 				JSONArray author = null;
