@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -35,7 +37,7 @@
 
                         <!-- 書籍データを全て表示 -->
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="/groupwork/BookServlet">
                                 <span data-feather="home"></span>
                                 <i class="fas fa-list"></i>
                                 　蔵書一覧 <span class="sr-only">(現在位置)</span>
@@ -44,7 +46,7 @@
 
                         <!-- 貸出中の書籍を表示 -->
                         <li class="nav-item">
-                            <a class="nav-link" href="/groupwork/lendServlet?disc=history">
+                            <a class="nav-link" href="/groupwork/LendServlet?disc=history">
                                 <span data-feather="file"></span>
                                 <i class="fas fa-history"></i>
                                 　貸出履歴
