@@ -98,7 +98,7 @@
 			<!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
-					<c:forEach var="book_data" items="${bookList}">
+					<c:forEach var="book_data" items="${bookLendList}">
 						<h4>
 							<c:out value="${book_data.title }" />
 							:

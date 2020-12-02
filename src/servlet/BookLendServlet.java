@@ -57,13 +57,18 @@ public class BookLendServlet extends HttpServlet {
 			bookLendList = bookLendDAO.findMyLendingBooks(userId);
 			request.setAttribute("bookLendList", bookLendList);
 			forwardPass="/WEB-INF/jsp/borrowing.jsp";
-		}else if(disc.equals("ranking")) {
+		}
+		if(disc.equals("ranking")) {
+			System.out.println("あ");
+
 			// 人気順に表示
 			List<BookData> bookList=new ArrayList<>();
 			LendDAO lendDAO=new LendDAO();
 			bookList=lendDAO.sortBooks();
 			request.setAttribute("bookList", bookList);
-			forwardPass="/WEB-INF/jsp/	.jsp";
+			System.out.println("い");
+
+			forwardPass="/WEB-INF/jsp/lendRanking.jsp";
 		}
 		RequestDispatcher dsp=request.getRequestDispatcher(forwardPass);
 		dsp.forward(request,response);

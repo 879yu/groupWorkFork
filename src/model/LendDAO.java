@@ -156,4 +156,40 @@ public class LendDAO extends ConnectionDAO{
 		}
 		return bookList;
 	}
+	/**
+	 * 本が貸し出された時、lendテーブルに新規貸出情報をinsertする
+	 * @param userId
+	 * @param bookId
+	 * @return boolean
+	 */
+	public boolean setLendData(LendData lendData) {
+		// 実行するSQL文を文字列として事前に設定
+		final String SQL = "INSERT INTO LEND"
+				+ "(user_id, book_id, lend_date) "
+				+ "VALUES(?, ?, ?)";
+
+		try (Connection conn = getConnection();
+				PreparedStatement pstm = conn.prepareStatement(SQL)) {
+
+			// プレースホルダに取得したデータをセット
+			pstm.setInt(1,lendData.getUserId());      // ユーザーID
+			pstm.setInt(2,lendData.getBookId());      // 書籍ID
+			pstm.setString(3,lendData.getLendDate()); // 貸出日
+
+			// 更新された行数を変数に格納（クエリ成功なら1が格納される）
+			int result = pstm.executeUpdate();
+
+			// 更新成功（resultが1）ならtrueを返す
+			if(result == 1) {
+				return true;
+			}
+
+			// 更新失敗（resultが1以外）ならfalseを返す
+			return false;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

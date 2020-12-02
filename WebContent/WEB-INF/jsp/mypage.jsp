@@ -85,7 +85,7 @@
 
 						<!-- 返却 -->
 						<li class="nav-item"><a class="nav-link"
-							href="/groupwork/BookLendServlet"> <span
+							href="/groupwork/BookLendServlet?disc=lending"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-undo-alt"></i>
 								本を返却
 						</a></li>
@@ -105,7 +105,7 @@
 			<!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
-					<c:forEach var="book_data" items="${bookList}">
+					<c:forEach var="book_data" items="${bookLendList}">
 						<h4>
 							<c:out value="${book_data.title }" />
 							:
@@ -129,7 +129,7 @@
 										</from>
 									</c:when>
 									<c:otherwise>
-											<button type="submit" class="btn btn-outline-dark" disabled>借りる</button>
+											<button type="submit" class="btn btn-outline-dark" disabled>返却待ち</button>
 									</c:otherwise>
 								</c:choose>
 								<!-- <div class="col-1">
