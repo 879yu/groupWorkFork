@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import model.BookData;
 import model.BookLendData;
 import model.LendDAO;
+import model.LendData;
 import model.User;
 
 @WebServlet("/LendServlet")
@@ -47,6 +48,7 @@ public class LendServlet extends HttpServlet {
 		LendDAO lendDAO;
 		List<BookData> lendList;
 		List<BookLendData> bookLendList;
+		int lendId;
 
 		switch(disc) {
 			case "history":	// 貸出履歴の表示
@@ -66,7 +68,11 @@ public class LendServlet extends HttpServlet {
 			case "lend":// 貸出処理
 				lendDAO=new LendDAO();
 				lendList=new ArrayList<>();
-				boolean isLend=lendDAO.メソッド名(date);
+				// ****jspから受け取る****
+				int bookId=(int)request.getAttribute("bookId");
+
+				LendData lendData=new LendData(lendId, userId, bookId, date, null);
+				boolean isLend=lendDAO.setLendData(lendData);
 				if(isLend) {
 					forwardPass="/WEB-INF/jsp/success.jsp";
 				}else {
@@ -77,7 +83,7 @@ public class LendServlet extends HttpServlet {
 			case "return":	// 返却処理
 				lendDAO=new LendDAO();
 				lendList=new ArrayList<>();
-				int lendId = (int) request.getAttribute("lendId");
+				lendId = (int) request.getAttribute("lendId");
 				boolean isReturn = lendDAO.setRetrunDate(lendId, date);
 				if(isLend) {
 					forwardPass="/WEB-INF/jsp/success.jsp";
