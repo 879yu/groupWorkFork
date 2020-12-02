@@ -68,229 +68,278 @@
 
 	<main role="main">
 
-		<section class="jumbotron text-center">
-			<div class="container">
-				<!-- <h1 class="jumbotron-heading">Album example</h1> -->
-				<h1 class="jumbotron-heading">グループ2班 書籍管理</h1>
-				<!-- <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
-				<p class="lead text-muted"></p>
-				<p>
-					<!-- <a href="#" class="btn btn-primary my-2">Main call to action</a> -->
-					<a href="/groupwork/LoginServlet" class="btn btn-primary my-2">ログインページ</a>
-					<!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
-				</p>
+		<!-- メインコンテンツ -->
+		<main role="main" class="col-10 ml-sm-auto">
+			<div class="container-fluid my-2">
+				<c:forEach var="book_data" items="${bookList}">
+					<h4>
+						<c:out value="${book_data.title }" />
+						:
+						<c:out value="${book_data.author }" />
+					</h4>
+					<div>
+						<div class="row ml-5">
+							<div class="col-1">
+								<img src=<c:out value="${book_data.imageLinks }" /> width="150"
+									height="200" class="rounded" alt="...">
+							</div>
+							<div class="col-8 m-5">
+								<p>
+									<c:out value="${book_data.description }" />
+								</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
-		</section>
+			<section class="jumbotron text-center">
+				<div class="container">
+					<!-- <h1 class="jumbotron-heading">Album example</h1> -->
+					<h1 class="jumbotron-heading">グループ2班 書籍管理</h1>
+					<!-- <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p> -->
+					<p class="lead text-muted"></p>
+					<p>
+						<!-- <a href="#" class="btn btn-primary my-2">Main call to action</a> -->
+						<a href="/groupwork/LoginServlet" class="btn btn-primary my-2">ログインページ</a>
+						<!-- <a href="#" class="btn btn-secondary my-2">Secondary action</a> -->
+					</p>
+				</div>
+			</section>
 
-		<div class="album py-5 bg-light">
-			<div class="container">
+			<div class="album py-5 bg-light">
+				<div class="container">
 
-				<div class="row">
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap" style="height: 225px; width: 100%; display: block; object-fit: contain;"
-								src="img/java1.jpg">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap"
+									style="height: 225px; width: 100%; display: block; object-fit: contain;"
+									src="img/java1.jpg">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap" style="height: 225px; width: 100%; display: block; object-fit: contain;"
-								src="img/java2.jpg">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap"
+									style="height: 225px; width: 100%; display: block; object-fit: contain;"
+									src="img/java2.jpg">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap" style="height: 225px; width: 100%; display: block; object-fit: contain;"
-								src="img/java3.jpg">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap"
+									style="height: 225px; width: 100%; display: block; object-fit: contain;"
+									src="img/java3.jpg">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap" style="height: 225px; width: 100%; display: block; object-fit: contain;"
-								src="img/java4.jpg">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap"
+									style="height: 225px; width: 100%; display: block; object-fit: contain;"
+									src="img/java4.jpg">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap" style="height: 225px; width: 100%; display: block; object-fit: contain;"
-								src="img/java5.jpg">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap"
+									style="height: 225px; width: 100%; display: block; object-fit: contain;"
+									src="img/java5.jpg">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap" style="height: 225px; width: 100%; display: block; object-fit: contain;"
-								src="img/java6.jpg">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap"
+									style="height: 225px; width: 100%; display: block; object-fit: contain;"
+									src="img/java6.jpg">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap" style="height: 225px; width: 100%; display: block; object-fit: contain;"
-								src="img/java7.jpg">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap"
+									style="height: 225px; width: 100%; display: block; object-fit: contain;"
+									src="img/java7.jpg">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="card mb-4 shadow-sm">
-							<img class="card-img-top"
-								data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-								alt="Card image cap">
-							<div class="card-body">
-								<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
-								<p class="card-text">書籍名</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">見る</button>
-										<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
-										<button type="button" class="btn btn-sm btn-outline-secondary">編集</button>
+						<div class="col-md-4">
+							<div class="card mb-4 shadow-sm">
+								<img class="card-img-top"
+									data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+									alt="Card image cap">
+								<div class="card-body">
+									<!-- <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+									<p class="card-text">書籍名</p>
+									<div class="d-flex justify-content-between align-items-center">
+										<div class="btn-group">
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">View</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">見る</button>
+											<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+											<button type="button"
+												class="btn btn-sm btn-outline-secondary">編集</button>
+										</div>
+										<!-- <small class="text-muted">9 mins</small> -->
+										<small class="text-muted"></small>
 									</div>
-									<!-- <small class="text-muted">9 mins</small> -->
-									<small class="text-muted"></small>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-	</main>
+		</main>
 
-	<footer class="text-muted">
+		<footer class="text-muted">
 		<div class="container">
 			<p class="float-right">
 				<!-- <a href="#">Back to top</a> -->

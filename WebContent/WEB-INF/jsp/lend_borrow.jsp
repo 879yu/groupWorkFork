@@ -21,15 +21,15 @@
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
 
-<!-- GoogleFonts　CDNの読み込み -->
-<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
-	rel="stylesheet">
-
 <!-- 自作CSSの読み込み -->
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/navibar.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/main.css">
+
+<!-- GoogleFonts　CDNの読み込み -->
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
+	rel="stylesheet">
 </head>
 
 <body>
@@ -93,10 +93,10 @@
 					</ul>
 			</nav>
 			<h1>貸し借り履歴一覧</h1>
-			<!-- メインコンテンツ -->
+            <!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
-					<c:forEach var="book_data" items="${bookList}">
+					<c:forEach var="book_data" items="${lendList}">
 						<h4>
 							<c:out value="${book_data.title }" />
 							:
@@ -114,7 +114,7 @@
 									</p>
 								</div>
 								<div class="col-1">
-									<form action="#" method="get">
+									<form action="/groupwork/LendServlet" method="get">
 										<button type="submit" class="btn btn-outline-dark">返却</button>
 									</form>
 								</div>

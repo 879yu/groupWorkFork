@@ -19,5 +19,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="X:/グループ課題用作業場所/2班(谷口、井、末永、大西)/json-20201115.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
