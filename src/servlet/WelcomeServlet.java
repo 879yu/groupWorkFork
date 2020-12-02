@@ -15,7 +15,7 @@ public class WelcomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// トップページに遷移
-		RequestDispatcher dsp=request.getRequestDispatcher("/welcome.jsp");
+		RequestDispatcher dsp=request.getRequestDispatcher("/login.jsp");
 		dsp.forward(request,response);
 	}
 
