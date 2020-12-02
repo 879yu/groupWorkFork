@@ -72,31 +72,31 @@
 					<ul class="nav flex-column">
 
 						<!-- ランキングを表示 -->
-						<li class="nav-item"><a class="nav-link active" href="/groupwork/BookLendServlet?'disc'='ranking'">
-								<span data-feather="home"></span> <i class="fas fa-list"></i>
-								ランキング
+						<li class="nav-item"><a class="nav-link active"
+							href="/groupwork/BookLendServlet?disc=ranking"> <span
+								data-feather="home"></span> <i class="fas fa-list"></i> ランキング
 						</a></li>
 
 						<!-- 貸出履歴を表示 -->
-						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='history'"> <span
+						<li class="nav-item"><a class="nav-link"
+							href="/groupwork/LendServlet?disc=history"> <span
 								data-feather="file"></span> <i class="fas fa-history"></i> 貸出履歴
 						</a></li>
 
 						<!-- 返却 -->
-						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='lend'"> <span
+						<li class="nav-item"><a class="nav-link"
+							href="/groupwork/BookLendServlet?disc=lending"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-undo-alt"></i>
-								貸出中一覧
+								本を返却
 						</a></li>
 
 						<!-- <li class="nav-item"><a class="nav-link" href="#"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-cog"></i>
 								設定
-						</a></li> -->
-
 						<!-- welcomeページに戻る -->
-						<li class="nav-item"><a class="nav-link" href="/groupwork/WelcomeServlet"> <span
-								data-feather="users"></span> <i class="fas fa-sign-out-alt"></i>
-								ログアウト
+						<li class="nav-item"><a class="nav-link"
+							href="/groupwork/WelcomeServlet"> <span data-feather="users"></span>
+								<i class="fas fa-sign-out-alt"></i> ログアウト
 						</a></li>
 					</ul>
 				</div>
@@ -105,7 +105,7 @@
 			<!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
-					<c:forEach var="book_data" items="${bookList}">
+					<c:forEach var="book_data" items="${bookLendList}">
 						<h4>
 							<c:out value="${book_data.title }" />
 							:
@@ -122,11 +122,21 @@
 										<c:out value="${book_data.description }" />
 									</p>
 								</div>
-								<div class="col-1">
+								<c:choose>
+									<c:when test="${book_data.lendDate == null }">
+										<from action="/groupwork/LendServlet?disc=lend" method="GET">
+										<button type="submit" class="btn btn-outline-dark">借りる</button>
+										</from>
+									</c:when>
+									<c:otherwise>
+											<button type="submit" class="btn btn-outline-dark" disabled>返却待ち</button>
+									</c:otherwise>
+								</c:choose>
+								<!-- <div class="col-1">
 									<form action="#" method="get">
 										<button type="submit" class="btn btn-outline-dark">返却</button>
 									</form>
-								</div>
+								</div> -->
 							</div>
 						</div>
 					</c:forEach>

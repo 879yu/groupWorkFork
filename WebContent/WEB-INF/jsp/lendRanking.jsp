@@ -64,18 +64,18 @@
 					<ul class="nav flex-column">
 
 						<!-- ランキングを表示 -->
-						<li class="nav-item"><a class="nav-link active" href="/groupwork/BookLendServlet?'disc'='ranking'">
+						<li class="nav-item"><a class="nav-link active" href="/groupwork/BookLendServlet?disc=ranking">
 								<span data-feather="home"></span> <i class="fas fa-list"></i>
 								ランキング
 						</a></li>
 
 						<!-- 貸出履歴を表示 -->
-						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='history'"> <span
+						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?disc=history"> <span
 								data-feather="file"></span> <i class="fas fa-history"></i> 貸出履歴
 						</a></li>
 
 						<!-- 返却 -->
-						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='lend'"> <span
+						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?disc=lend"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-undo-alt"></i>
 								貸出中一覧
 						</a></li>
