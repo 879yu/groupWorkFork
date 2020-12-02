@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="/WEB-INF/jsp/application.jsp"%>
+<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,20 +26,21 @@
 <link rel="stylesheet" href="css/navibar.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/employee.css">
 </head>
 </head>
 <body>
-	<h1>従業員一覧</h1>
+	<h1 class="employee">従業員一覧</h1>
 	<!-- メインコンテンツ -->
 	<main role="main" class="col-md-9 ml-sm-auto col-lg-10">
 		<div class="card">
 			<div class="card-body">
 				<c:forEach var="employee" items="${userList }">
-					<p>
-						<c:out value="${employee.userID }" />
+					<p class="user_id"><span class="id">id</span>
+						<c:out value="${employee.userId }" />
 					</p>
-					<p>
-						<c:out value="${employee.userList }" />
+					<p class="user_name"><span class="name">氏名</span>
+						<c:out value="${employee.userName }" />
 					</p>
 				</c:forEach>
 			</div>
