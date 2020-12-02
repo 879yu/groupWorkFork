@@ -64,28 +64,30 @@
 				<div class="sidebar-sticky">
 					<ul class="nav flex-column">
 
-						<!-- 書籍データを全て表示 -->
-						<li class="nav-item"><a class="nav-link active" href="#">
+						<!-- ランキングを表示 -->
+						<li class="nav-item"><a class="nav-link active" href="/groupwork/BookLendServlet?'disc'='ranking'">
 								<span data-feather="home"></span> <i class="fas fa-list"></i>
-								蔵書一覧 <span class="sr-only">(現在位置)</span>
+								ランキング
 						</a></li>
 
-						<!-- 貸出中の書籍を表示 -->
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						<!-- 貸出履歴を表示 -->
+						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='history'"> <span
 								data-feather="file"></span> <i class="fas fa-history"></i> 貸出履歴
 						</a></li>
 
 						<!-- 返却 -->
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						<li class="nav-item"><a class="nav-link" href="/groupwork/LendServlet?'disc'='lend'"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-undo-alt"></i>
-								本を返却
+								貸出中一覧
 						</a></li>
 
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						<!-- <li class="nav-item"><a class="nav-link" href="#"> <span
 								data-feather="shopping-cart"></span> <i class="fas fa-cog"></i>
 								設定
-						</a></li>
-						<li class="nav-item"><a class="nav-link" href="#"> <span
+						</a></li> -->
+
+						<!-- welcomeページに戻る -->
+						<li class="nav-item"><a class="nav-link" href="/groupwork/WelcomeServlet"> <span
 								data-feather="users"></span> <i class="fas fa-sign-out-alt"></i>
 								ログアウト
 						</a></li>
