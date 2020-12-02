@@ -33,8 +33,9 @@ public class LendServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		// 呼び出し元の判別
-		String[] prms=request.getParameterValues("disc");
-		String disc = prms[0];
+		String disc=request.getParameter("disc");
+//		String[] prms=request.getParameterValues("disc");
+//		String disc = prms[0];
 
 
 		// 日付の取得
@@ -77,10 +78,17 @@ public class LendServlet extends HttpServlet {
 			lendDAO = new LendDAO();
 			lendList = new ArrayList<>();
 			// ****jspから受け取る****
-//			int bookId = (int) request.getAttribute("bookId");
-			int bookId=Integer.parseInt(prms[1]);
+			int bookId = Integer.parseInt(request.getParameter("bookId"));
+//			int bookId=Integer.parseInt(prms[1]);
 //			System.out.println(bookId);
 //			System.out.println(userId);
+
+			// mypage.jspの記述
+//			<form action="/groupwork/LendServlet" method="GET">
+//			<input type="hidden" name="disc" value="lend">
+//			<input type="hidden" name="bookId" value=${ book_data.bookId }>
+//			<button type="submit" class="btn btn-outline-dark">借りる</button>
+//			</form>
 
 			LendData lendData = new LendData(userId, bookId, date);
 			boolean isLend = lendDAO.setLendData(lendData);
