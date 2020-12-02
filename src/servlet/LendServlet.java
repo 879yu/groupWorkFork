@@ -62,7 +62,7 @@ public class LendServlet extends HttpServlet {
 					lendList = lendDAO.findMyLendHistory(userId);
 				}
 				request.setAttribute("lendList", lendList);
-				forwardPass="/WEB-INF/jsp/lend_borrow.jsp";
+				forwardPass="/WEB-INF/jsp/borrow_return.jsp";
 				break;
 
 			case "lend":// 貸出処理
