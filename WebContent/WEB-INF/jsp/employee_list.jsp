@@ -28,7 +28,6 @@
 <link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="css/employee.css">
 </head>
-</head>
 <body>
 	<h1 class="employee">従業員一覧</h1>
 	<!-- メインコンテンツ -->
