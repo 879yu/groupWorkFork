@@ -128,7 +128,7 @@ public class AddBookLogic implements EnvSet {
 //				rd = request.getRequestDispatcher("/no_result.jsp");
 //				rd.forward(request, response);
 				System.out.println("検索結果なし");
-				forwardPass = "/WEB-INF/jsp/fail.jsp";
+				forwardPass = "/WEB-INF/jsp/admin_fail.jsp";
 			}
 
 			//JSON配列itemsの取得
@@ -235,7 +235,7 @@ public class AddBookLogic implements EnvSet {
 					//        		request.setAttribute("bookData",bookData);
 				} else {
 					System.out.println("insert失敗");
-					forwardPass = "/WEB-INF/jsp/fail.jsp";
+					forwardPass = "/WEB-INF/jsp/admin_fail.jsp";
 				}
 
 			}

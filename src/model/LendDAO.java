@@ -95,7 +95,8 @@ public class LendDAO extends ConnectionDAO{
 	 */
 	public boolean setRetrunDate(int lendId, String date) {
 		// 実行するSQL文を文字列として事前に設定
-		final String SQL = "UPDATE LEND SET RETURN_DATE =" + date + "WHERE LEND_ID =" + lendId;
+		final String SQL = "UPDATE LEND SET RETURN_DATE = " + date + " WHERE LEND_ID = " + lendId;
+		System.out.println(SQL);
 
 		try (Connection conn = getConnection();
 				PreparedStatement pstm = conn.prepareStatement(SQL)) {
