@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -35,7 +37,7 @@
 
                         <!-- 書籍データを全て表示 -->
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="/groupwork/BookServlet">
                                 <span data-feather="home"></span>
                                 <i class="fas fa-list"></i>
                                 　蔵書一覧 <span class="sr-only">(現在位置)</span>
@@ -44,27 +46,10 @@
 
                         <!-- 貸出中の書籍を表示 -->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/groupwork/LendServlet?disc=history">
                                 <span data-feather="file"></span>
                                 <i class="fas fa-history"></i>
                                 　貸出履歴
-                            </a>
-                        </li>
-
-                        <!-- 返却 -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span>
-                                <i class="fas fa-undo-alt"></i>
-                                　本を返却
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="shopping-cart"></span>
-                                <i class="fas fa-cog"></i>
-                                　設定
                             </a>
                         </li>
 
@@ -77,7 +62,7 @@
                         </li> -->
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="/groupwork/LoginServlet">
                                 <span data-feather="users"></span>
                                 <i class="fas fa-sign-out-alt"></i>
                                 　ログアウト
