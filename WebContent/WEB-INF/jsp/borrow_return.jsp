@@ -21,24 +21,12 @@
 	integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
 	crossorigin="anonymous" />
 
-<<<<<<< HEAD
-	<!-- 自作CSSの読み込み -->
-<link rel="stylesheet" href="/groupwork/css/common.css">
-<link rel="stylesheet" href="/groupwork/css/navibar.css">
-<link rel="stylesheet" href="/groupwork/css/sidebar.css">
-<link rel="stylesheet" href="/groupwork/css/main.css">
-
-<!-- GoogleFonts　CDNの読み込み -->
-<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c"
-	rel="stylesheet">
-
-=======
 	<!-- 自作CSSの読み込み -->
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/navibar.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/main.css">
->>>>>>> refs/remotes/origin/master
+
 </head>
 
 <!-- GoogleFonts　CDNの読み込み -->
@@ -111,7 +99,7 @@
 			<!-- メインコンテンツ -->
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
-					<c:forEach var="book_data" items="${bookLendList}">
+					<c:forEach var="book_data" items="${lendList}">
 						<h4>
 							<c:out value="${book_data.title }" />
 							:

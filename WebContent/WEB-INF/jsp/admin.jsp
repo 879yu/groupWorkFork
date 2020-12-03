@@ -46,6 +46,9 @@
 								</div>
 								<div class="col-1">
 									<form action="/groupwork/LendServlet?disc=return" method="get">
+						<div>
+							class="col-1>
+									<!-- <form action="#" method="get">
 										<button type="submit" class="btn btn-outline-dark">返却</button>
 									</form>
 								</div>
