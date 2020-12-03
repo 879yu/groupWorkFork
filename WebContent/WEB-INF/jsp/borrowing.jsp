@@ -120,7 +120,9 @@
 									</p>
 								</div>
 								<div class="col-1">
-									<form action="/groupwork/LandServlet?disc=return" method="get">
+									<form action="/groupwork/LendServlet" method="get">
+										<input type="hidden" name="disc" value="return">
+										<input type="hidden" name="lendId" value=${ book_data.lendId }>
 										<button type="submit" class="btn btn-outline-dark">返却</button>
 									</form>
 								</div>

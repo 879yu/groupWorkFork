@@ -19,8 +19,8 @@
 		<h1 class="admin">管理者ページ</h1>
 				<%@ include file="/WEB-INF/jsp/sidebar.jsp"%>
 				<div class="register">
-			<form action="" method="post">
-				<input type="text" placeholder="本を登録" class="insert_book_name">
+			<form action="/groupwork/BookServlet" method="post">
+				<input type="text" placeholder="本を登録" class="insert_book_name" name="isbn">
 				<button class="btn btn-primary" type="submit">登録</button>
 		</form>
 		</div>

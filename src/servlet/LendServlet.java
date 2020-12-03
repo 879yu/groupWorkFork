@@ -40,7 +40,7 @@ public class LendServlet extends HttpServlet {
 
 		// 日付の取得
 		Date d = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String date = sdf.format(d);
 
 		// 従業員か管理者かの判別
@@ -71,24 +71,12 @@ public class LendServlet extends HttpServlet {
 			request.setAttribute("lendList", lendList);
 			forwardPass = "/WEB-INF/jsp/borrow_return.jsp";
 			//				break;
-		} else if (disc.equals("lend")) {
+		} else if (disc.equals("lend")) { // 貸出
 
-
-			//			case "lend":// 貸出処理
 			lendDAO = new LendDAO();
 			lendList = new ArrayList<>();
 			// ****jspから受け取る****
 			int bookId = Integer.parseInt(request.getParameter("bookId"));
-//			int bookId=Integer.parseInt(prms[1]);
-//			System.out.println(bookId);
-//			System.out.println(userId);
-
-			// mypage.jspの記述
-//			<form action="/groupwork/LendServlet" method="GET">
-//			<input type="hidden" name="disc" value="lend">
-//			<input type="hidden" name="bookId" value=${ book_data.bookId }>
-//			<button type="submit" class="btn btn-outline-dark">借りる</button>
-//			</form>
 
 			LendData lendData = new LendData(userId, bookId, date);
 			boolean isLend = lendDAO.setLendData(lendData);
@@ -101,12 +89,11 @@ public class LendServlet extends HttpServlet {
 				forwardPass = "/WEB-INF/jsp/fail.jsp";
 			}
 			//				break;
-		} else if (disc.equals("return")) {
+		} else if (disc.equals("return")) { // 返却
 
-			//			case "return":	// 返却処理
 			lendDAO = new LendDAO();
 			lendList = new ArrayList<>();
-			lendId = (int) request.getAttribute("lendId");
+			lendId = Integer.parseInt(request.getParameter("lendId"));
 			boolean isReturn = lendDAO.setRetrunDate(lendId, date);
 			if (isReturn) {
 				forwardPass = "/WEB-INF/jsp/success.jsp";
