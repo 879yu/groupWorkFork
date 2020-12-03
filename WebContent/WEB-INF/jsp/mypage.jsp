@@ -38,7 +38,7 @@
 	<header>
 		<nav
 			class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href=""><img src="/groupwork/img/logo (2).png" width="20%" height="20%"></a>
+			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">会社名</a>
 
 			<!-- 画面遷移先を指定する -->
 			<form class="form-inline w-100" action="/groupwork/BookLendServlet"
@@ -57,7 +57,7 @@
 				<button class="btn btn-outline-light m-1 my-sm-0" type="submit">検索</button>
 			</form>
 			<ul class="navbar-nav px-3">
-				<li class="nav-item text-nowrap"><a class="nav-link" href="#">（ユーザー名）さん</a>
+				<li class="nav-item text-nowrap"><a class="nav-link" href="#"><c:out value="${user.userName }" />さん</a>
 				</li>
 			</ul>
 		</nav>
@@ -124,10 +124,11 @@
 								</div>
 								<c:choose>
 									<c:when test="${book_data.lendDate == null }">
-										<form action="/groupwork/LendServlet?disc=lend" method="GET">
-										<input type="hidden" name="disc" value="${ book_data.bookId }">
-										<button type="submit" class="btn btn-outline-dark">借りる</button>
-										</form>
+			<form action="/groupwork/LendServlet" method="GET">
+			<input type="hidden" name="disc" value="lend">
+			<input type="hidden" name="bookId" value=${ book_data.bookId }>
+			<button type="submit" class="btn btn-outline-dark">借りる</button>
+			</form>
 									</c:when>
 									<c:otherwise>
 											<button type="submit" class="btn btn-outline-dark" disabled>返却待ち</button>
