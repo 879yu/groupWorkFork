@@ -57,7 +57,7 @@
 				<button class="btn btn-outline-light m-1 my-sm-0" type="submit">検索</button>
 			</form>
 			<ul class="navbar-nav px-3">
-				<li class="nav-item text-nowrap"><a class="nav-link" href="#">（ユーザー名）さん</a>
+				<li class="nav-item text-nowrap"><a class="nav-link" href="#"><c:out value="${user.userName }" />さん</a>
 				</li>
 			</ul>
 		</nav>
@@ -124,9 +124,10 @@
 								</div>
 								<c:choose>
 									<c:when test="${book_data.lendDate == null }">
-										<from action="/groupwork/LendServlet?disc=lend" method="GET">
+										<form action="/groupwork/LendServlet?disc=lend" method="GET">
+										<input type="hidden" name="disc" value="${ book_data.bookId }">
 										<button type="submit" class="btn btn-outline-dark">借りる</button>
-										</from>
+										</form>
 									</c:when>
 									<c:otherwise>
 											<button type="submit" class="btn btn-outline-dark" disabled>返却待ち</button>

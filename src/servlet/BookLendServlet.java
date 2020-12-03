@@ -44,7 +44,7 @@ public class BookLendServlet extends HttpServlet {
 			List<BookLendData> bookLendList=new ArrayList<>();
 			SearchBookDAO searchBookDAO=new SearchBookDAO();
 			bookLendList=searchBookDAO.searchBook(keyword, radioButton);
-			request.setAttribute("bookList",bookLendList);
+			request.setAttribute("bookLendList",bookLendList);
 			forwardPass="/WEB-INF/jsp/mypage.jsp";
 
 		}else if(disc.equals("lending")) {
@@ -57,9 +57,7 @@ public class BookLendServlet extends HttpServlet {
 			bookLendList = bookLendDAO.findMyLendingBooks(userId);
 			request.setAttribute("bookLendList", bookLendList);
 			forwardPass="/WEB-INF/jsp/borrowing.jsp";
-		}
-
-		if(disc.equals("ranking")) {
+		}else if(disc.equals("ranking")) {
 			System.out.println("あ");
 
 			// 人気順に表示

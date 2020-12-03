@@ -49,7 +49,7 @@
 			<button class="btn btn-outline-light m-2 my-sm-0" type="submit">検索</button>
             </form>
 		<ul class="navbar-nav px-3">
-			<li class="nav-item text-nowrap"><a class="nav-link" href="#">（ユーザー名）さん</a>
+			<li class="nav-item text-nowrap"><a class="nav-link" href="#"><c:out value="${user.userName }" />さん</a>
 			</li>
 		</ul>
 	</nav>

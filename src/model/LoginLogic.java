@@ -33,10 +33,10 @@ public class LoginLogic {
 		}else {
 			forwardPass= "/WEB-INF/jsp/mypage.jsp";
 			// 登録書籍一覧の表示
-			List<BookData> bookList=new ArrayList<>();
-			BookDAO bookDAO=new BookDAO();
-			bookList=bookDAO.findAllBooks();
-			request.setAttribute("bookList", bookList);
+			BookLendDAO bookLendDAO = new BookLendDAO();
+			List<BookLendData> bookLendList=new ArrayList<>();
+			bookLendList = bookLendDAO.findAllLendingData();
+			request.setAttribute("bookLendList", bookLendList);
 
 		}
 

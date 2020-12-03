@@ -16,7 +16,7 @@ public class BookLendDAO extends ConnectionDAO{
 	 */
 	public List<BookLendData> findAllLendingData(){
 		// 実行するSQL文を文字列として事前に設定
-		final String SQL = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID";
+		final String SQL = "SELECT * FROM BOOKS left JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID";
 
 		// 戻り値をセットするリストの準備
 		List<BookLendData> lendingList = new ArrayList<>();
@@ -59,7 +59,19 @@ public class BookLendDAO extends ConnectionDAO{
 	 */
 	public List<BookLendData> findMyLendingBooks(int userId){
 		// 実行するSQL文を文字列として事前に設定
-		final String SQL = "SELECT * FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE LEND.USER_ID = " + userId;
+		final String SQL = "SELECT "
+				+ "BOOKS.BOOK_ID, "
+				+ "TITLE, AUTHOR, "
+				+ "PUBLISHED_DATE, "
+				+ "PUBLISHER, DESCRIPTION, "
+				+ "ISBN_13, "
+				+ "IMAGE_LINKS, "
+				+ "PURCHASE_DATE, "
+				+ "LEND_ID, "
+				+ "USER_ID, "
+				+ "LEND_DATE, "
+				+ "RETURN_DATE "
+				+ "FROM BOOKS JOIN LEND ON BOOKS.BOOK_ID = LEND.BOOK_ID WHERE LEND.USER_ID = " + userId;
 
 		// 戻り値をセットするリストの準備
 		List<BookLendData> lendingList = new ArrayList<>();
