@@ -38,7 +38,7 @@
 	<header>
 		<nav
 			class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">会社名</a>
+			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href=""><img src="/groupwork/img/logo (2).png" width="20%" height="20%"></a>
 
 			<!-- 画面遷移先を指定する -->
 			<form class="form-inline w-100" action="/groupwork/BookLendServlet"

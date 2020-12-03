@@ -46,9 +46,9 @@
 								</div>
 						<div>
 							class="col-1>
-									<form action="#" method="get">
+									<!-- <form action="#" method="get">
 										<button type="submit" class="btn btn-outline-dark">返却</button>
-									</form>
+									</form> -->
 								</div>
 							</div>
 						</div>
