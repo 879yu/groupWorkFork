@@ -49,7 +49,7 @@
                 <button class="btn btn-outline-light m-1 my-sm-0" type="submit">検索</button>
             </form>
 			<ul class="navbar-nav px-3">
-				<li class="nav-item text-nowrap"><a class="nav-link" href="#">（ユーザー名）さん</a>
+				<li class="nav-item text-nowrap"><a class="nav-link" href="#"><c:out value="${user.userName }" />さん</a>
 				</li>
 			</ul>
 		</nav>
@@ -99,13 +99,14 @@
 			<main role="main" class="col-10 ml-sm-auto">
 				<div class="container-fluid my-2">
 					<c:forEach var="book_data" items="${bookLendList}">
+						<c:if test = "${ book_data.returnDate == null }">
 						<h4>
 							<c:out value="${book_data.title }" />
 							:
 							<c:out value="${book_data.author }" />
 						</h4>
 						<h5>
-							<c:out value="${book_data.userId }" />
+							<c:out value="${book_data.lendDate }" />
 							からレンタル中
 						</h5>
 						<div>
@@ -126,8 +127,10 @@
 								</div>
 							</div>
 						</div>
+						</c:if>
 					</c:forEach>
 				</div>
+
 				<!-- jQuery　CDNの読み込み -->
 				<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 					integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
