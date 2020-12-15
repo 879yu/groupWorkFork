@@ -61,12 +61,13 @@ public class LendServlet extends HttpServlet {
 			//			case "history":	// 貸出履歴の表示
 			lendDAO = new LendDAO();
 			lendList = new ArrayList<>();
+			List<BookLendData> bookLendList2=new ArrayList<BookLendData>();
 			if (userId == 0) {
 				// 全履歴表示（admin）
 				lendList = lendDAO.findAllLendHistory();
 			} else {
 				// 個人履歴表示
-				lendList = lendDAO.findMyLendHistory(userId);
+				bookLendList2 = lendDAO.findMyLendHistory(userId);
 			}
 			request.setAttribute("lendList", lendList);
 			forwardPass = "/WEB-INF/jsp/borrow_return.jsp";

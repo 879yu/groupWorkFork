@@ -53,12 +53,12 @@ public class LendDAO extends ConnectionDAO{
 	 * @param userId
 	 * @return List ログイン中のユーザーの全貸出履歴を格納したArrayList
 	 */
-	public List<BookData> findMyLendHistory(int userId){
+	public List<BookLendData> findMyLendHistory(int userId){
 		// 実行するSQL文を文字列として事前に設定
-		final String SQL = "SELECT * FROM BOOKS INNER JOIN LEND ON USER_ID =" + userId;
+		final String SQL = "SELECT * FROM BOOKS LEFT JOIN LEND ON books.book_id = lend.book_id where lend.user_id = " + userId;
 
 		// 戻り値をセットするリストの準備
-		List<BookData> bookList = new ArrayList<>();
+		List<BookLendData> bookList = new ArrayList<>();
 
 		try (Connection conn = getConnection();
 				PreparedStatement pstm = conn.prepareStatement(SQL)) {
@@ -68,15 +68,21 @@ public class LendDAO extends ConnectionDAO{
 
 			// DBを一行ずつ読み込んで書籍情報をインスタンスにセット
 			while (rs.next()) {
-				BookData bookData = new BookData();
-				bookData.setTitle(rs.getString(1));         // 書籍タイトル
-				bookData.setAuthor(rs.getString(2));        // 著者
-				bookData.setPublishedDate(rs.getString(3)); // 出版日
-				bookData.setPublisher(rs.getString(4));     // 出版社
-				bookData.setDescription(rs.getString(5));   // 書籍概要
-				bookData.setImageLinks(rs.getString(6));    // 表紙画像リンク
+				BookLendData bookData = new BookLendData();
+				bookData.setBookId(rs.getInt(1));
+				bookData.setTitle(rs.getString(2));         // 書籍タイトル
+				bookData.setAuthor(rs.getString(3));        // 著者
+				bookData.setPublishedDate(rs.getString(4)); // 出版日
+				bookData.setPublisher(rs.getString(5));     // 出版社
+				bookData.setDescription(rs.getString(6));   // 書籍概要
 				bookData.setIsbn(rs.getString(7));          // ISBN
-				bookData.setPurchaseDate(rs.getString(8));  // 購入日
+				bookData.setImageLinks(rs.getString(8));    // 表紙画像リンク
+				bookData.setPurchaseDate(rs.getString(9));  // 購入日
+				bookData.setLendId(rs.getInt(10));
+				bookData.setUserId(rs.getInt(11));
+				bookData.setBookId(rs.getInt(12));
+				bookData.setLendDate(rs.getString(13));          // ISBN
+				bookData.setReturnDate(rs.getString(14));          // ISBN
 
 				// インスタンスにセットした情報をリストに格納
 				bookList.add(bookData);
