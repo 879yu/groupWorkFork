@@ -64,8 +64,8 @@ public class AddBookLogic implements EnvSet {
 			//例外発生時、error.jspへフォワードする
 			request.setAttribute("error", e.toString());
 			System.out.println("接続失敗");
-//			rd = request.getRequestDispatcher("/error.jsp");
-//			rd.forward(request, response);
+			//			rd = request.getRequestDispatcher("/error.jsp");
+			//			rd.forward(request, response);
 			return null;
 		}
 
@@ -77,8 +77,8 @@ public class AddBookLogic implements EnvSet {
 
 			//レスポンスコードが200以外の場合は、error.jspへフォワードする
 			request.setAttribute("error", "Google Books API　へのリクエストが失敗しました。レスポンスコード：" + responseCode);
-//			rd = request.getRequestDispatcher("/error.jsp");
-//			rd.forward(request, response);
+			//			rd = request.getRequestDispatcher("/error.jsp");
+			//			rd.forward(request, response);
 			return null;
 		}
 
@@ -125,14 +125,14 @@ public class AddBookLogic implements EnvSet {
 
 			//検索結果0の場合、no_result.jspへフォワードする
 			if (count == 0) {
-//				rd = request.getRequestDispatcher("/no_result.jsp");
-//				rd.forward(request, response);
+				//				rd = request.getRequestDispatcher("/no_result.jsp");
+				//				rd.forward(request, response);
 				System.out.println("検索結果なし");
 				forwardPass = "/WEB-INF/jsp/admin_fail.jsp";
 			}
 
 			//JSON配列itemsの取得
-        	JSONArray jsonArray = jsonObject.getJSONArray("items");
+			JSONArray jsonArray = jsonObject.getJSONArray("items");
 
 			//検索結果データの格納
 			list = new ArrayList<BookData>();
@@ -152,7 +152,6 @@ public class AddBookLogic implements EnvSet {
 				//titleの取得
 				String title = volumeInfo.getString("title");
 				System.out.println(title);
-
 
 				//authorsの取得
 				JSONArray author = null;
@@ -203,12 +202,10 @@ public class AddBookLogic implements EnvSet {
 					//                }
 					//                JSONObject data=list.get(1);
 					//                imageLinks=data.getString("thumbnail");
-//					imageLinks = volumeInfo.getString("imageLinks");
-					    			JSONObject images=volumeInfo.getJSONObject("imageLinks");
-//					    			JSONObject image=images.getJSONObject(1);
-					    			imageLinks=images.getString("thumbnail");
-
-
+					//					imageLinks = volumeInfo.getString("imageLinks");
+					JSONObject images = volumeInfo.getJSONObject("imageLinks");
+					//					    			JSONObject image=images.getJSONObject(1);
+					imageLinks = images.getString("thumbnail");
 
 				} catch (JSONException e) {
 					// 画像なし

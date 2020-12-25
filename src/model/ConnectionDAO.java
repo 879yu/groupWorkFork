@@ -7,9 +7,11 @@ import java.sql.SQLException;
 public class ConnectionDAO {
 
 	// DB接続情報の設定
-	final String URL  = "jdbc:mysql://172.16.71.101:3306/group_work?serverTimezone=JST";
+	final String URL  = "jdbc:mysql://localhost:3306/group_work?serverTimezone=JST";
+//	final String URL  = "jdbc:mysql://172.16.71.101:3306/group_work?serverTimezone=JST";
 	final String USER = "webuser02";
-	final String PASS = "1234";
+//	final String PASS = "1234";
+	final String PASS = "1234groupwork";
 
 	public Connection getConnection() throws SQLException{
 		return DriverManager.getConnection(URL, USER, PASS);
